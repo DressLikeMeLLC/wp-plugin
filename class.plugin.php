@@ -14,6 +14,7 @@ class DressLikeMe extends TlView {
     public function afterSetupTheme() {
         add_action('wp_enqueue_scripts', array($this, 'enqueueStatic'));
         add_action('wp_ajax_dlm_json_action', array($this, 'getOutfitsFromApi'));
+        add_action('admin_menu', array($this, 'dlm_menu'));
 
         add_filter('mce_external_plugins', array($this, 'enqueuePluginScripts'));
         add_filter('mce_buttons', array($this, 'registerButtonsEditor'));
@@ -24,13 +25,13 @@ class DressLikeMe extends TlView {
     }
 
     public function outputOutfit($attr) {
-        return $this->view('outfit', array(
+        return $this->view('script-outfit', array(
             'sid' => trim($attr['id'])
         ), true);
     }
 
     public function outputWardrobe($attr) {
-        return $this->view('wardrobe', array(
+        return $this->view('script-wardrobe', array(
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
             'name' => get_option('dlm-name')
         ), true);
@@ -65,5 +66,66 @@ class DressLikeMe extends TlView {
         }
 
         exit($response['body']);
+    }
+
+    public function dlm_menu() {
+        add_menu_page( 'Dlm-Options', 'DressLikeMe', 'manage_options', 'dlm', array($this, 'dlm_toplevel_page'), 'https://dresslikeme.com/img/logo.svg', null );
+    }
+
+    public function dlm_toplevel_page() {
+        if (!current_user_can('manage_options'))
+        {
+            wp_die( __('You do not have sufficient permissions to access this page.') );
+        }
+
+        echo '<div class="wrap">';
+
+        echo "<h2>" . __('DressLikeMe Plugin Settings', 'menu-test') . "</h2>";
+
+        ?>  <form name="dlm-settings-form" method="post" action="">
+            <input type="hidden" name="mt_submit_hidden" value="Y">
+            <?php
+
+            $options = ['name', 'api-key'];
+            foreach($options as $opt_name) {
+
+                $data_field_name = $opt_name . 'mt_val';
+
+                $opt_val = get_option('dlm-'.$opt_name);
+
+                if (isset($_POST['mt_submit_hidden']) && $_POST['mt_submit_hidden'] == 'Y') {
+                    $opt_val = $_POST[$data_field_name];
+
+                    update_option('dlm-'.$opt_name, $opt_val);
+                }
+
+                ?>
+
+                <p>
+                    <label><?php echo ucfirst($opt_name) ?>:</label>
+                </p>
+                <p>
+                    <input type="text" name="<?php echo $data_field_name; ?>" style="width: 70%; height: 40px" value="<?php echo $opt_val; ?>">
+                </p>
+
+                <?php
+            }
+            ?>
+
+            <p class="submit">
+                <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>"/>
+            </p>
+        </form>
+        <hr>
+        <h3>
+            Get your access codes here:<br>
+        </h3>
+        <h3>
+            <a href="https://dresslikeme.com/member/profile/credentials">Link</a>
+        </h3>
+
+        </div>
+
+        <?php
     }
 }
