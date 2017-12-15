@@ -14,6 +14,5 @@ define('DLM_TD', 'dresslikeme');
 
 require_once(DLM_CALCULATOR_PATH.'class.tl-view.php');
 require_once(DLM_CALCULATOR_PATH.'class.plugin.php');
-require_once(DLM_CALCULATOR_PATH.'admin_menu.php');
 
 new DressLikeMe();
