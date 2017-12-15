@@ -29,7 +29,7 @@
 
                     {
                         title: 'DressLikeMe Outfit',
-                        file:  url + '/../views/tinymce-dialog.php',
+                        file:  url + '/../views/tinymce-outfit.php',
                         width: diWidth,
                         height: 800,
                         inline: 1
@@ -71,7 +71,7 @@
                 ed.windowManager.open(
                     {
                         title: 'DressLikeMe Wardrobe',
-                        file:  url + '/../views/tinymce-wardrobe-dialog.html',
+                        file:  url + '/../views/tinymce-wardrobe.html',
                         width: 280,
                         height: 190,
                         inline: 1
