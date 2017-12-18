@@ -9,11 +9,11 @@
 </head>
 <body>
 <div class="error-dlm"></div>
-<div class="images-dlm"></div>
 <form>
     <input type="text" name="search" id="search" /><br><br>
     <input type="submit" value="Search for this product." />
 </form>
+<div class="images-dlm"></div>
 <br>
 
 <script>
@@ -57,7 +57,7 @@
         var $a = $(this),
             id = $a.data('id');
 
-        passed_arguments.editor.selection.setContent('[product id=' + id + ']');
+        passed_arguments.editor.selection.setContent('[product id="' + id + '"]');
         passed_arguments.editor.windowManager.close();
     });
 </script>

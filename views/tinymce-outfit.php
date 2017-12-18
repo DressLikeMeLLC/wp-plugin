@@ -44,7 +44,7 @@
         var $a = $(this),
             sid = $a.data('sid');
 
-        passed_arguments.editor.selection.setContent('[outfit id=' + sid + ']');
+        passed_arguments.editor.selection.setContent('[outfit id="' + sid + '"]');
         passed_arguments.editor.windowManager.close();
     });
 </script>
