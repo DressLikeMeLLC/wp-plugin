@@ -39,10 +39,10 @@
 
             $.each(json, function(i, entry) {
                 var $box = $('<a class="product" href="#" data-id="' + entry.id + '" />');
-                $box.append('<p><img style="height:150px;" src="'+ entry.image +'" /></p>');
+                $box.append('<div class="product-div"><p><img src="'+ entry.image +'" /></p>');
                 $box.append('<p><strong>'+ entry.title +'</strong></p>');
                 $box.append('<p>'+ entry.price +' '+ entry.currency +'</p>');
-                $box.append('<p><small>'+ entry.id +'</small></p>');
+                $box.append('<p><small>'+ entry.id +'</small></p></div>');
 
                 $dlmImages.append($box);
             });
@@ -83,6 +83,19 @@
         text-decoration: none;
         float: left;
         padding: 20px;
+        width: 200px;
+    }
+
+    img {
+        width: 180px;
+        max-height: 250px;
+    }
+
+    div.product-div {
+        width: 200px;
+        height: 300px;
+        border: 3px solid #23282d;
+        margin: 20px;
     }
 
     input[type="text"] {
