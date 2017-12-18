@@ -71,7 +71,7 @@
                 ed.windowManager.open(
                     {
                         title: 'DressLikeMe Wardrobe',
-                        file:  url + '/../views/tinymce-wardrobe.html',
+                        file:  url + '/../views/tinymce-wardrobe.php',
                         width: 280,
                         height: 190,
                         inline: 1
@@ -80,7 +80,7 @@
                     {
                         editor: ed,
 
-                        jquery: $,
+                        jquery: $
                     }
                 );
             });
@@ -100,6 +100,65 @@
         }
     });
 
+    tinymce.create('tinymce.plugins.dlm_product', {
+
+        init : function(ed, url) {
+            if ($(window).width() > 1600) {
+                var diWidth = 1400;
+            }
+            if ($(window).width() < 1600) {
+                var diWidth = 1100;
+            }
+            if ($(window).width() < 1200) {
+                var diWidth = 800;
+            }
+            if ($(window).width() < 900) {
+                var diWidth = 500;
+            }
+            if ($(window).width() < 600) {
+                var diWidth = 300;
+            }
+
+            ed.addButton('dlm_product_button', {
+                title : 'DressLikeMe Product',
+                cmd : 'dlm_product_command',
+                icon : 'icon dashicons-cart'
+            });
+
+            ed.addCommand('dlm_product_command', function() {
+                ed.windowManager.open(
+
+                    {
+                        title: 'DressLikeMe Product',
+                        file:  url + '/../views/tinymce-product.php',
+                        width: diWidth,
+                        height: 800,
+                        inline: 1
+                    },
+
+                    {
+                        editor: ed,
+                        jquery: $,
+                        ajaxurl: ajaxurl
+                    }
+                );
+            });
+        },
+
+        createControl : function(n, cm) {
+            return null;
+        },
+
+        getInfo : function() {
+            return {
+                longname : "DressLikeMe Product",
+                author : "dresslikeme.com",
+                version : "1"
+            };
+        }
+    });
+
     tinymce.PluginManager.add("dlm_outfit", tinymce.plugins.dlm_outfit);
     tinymce.PluginManager.add("dlm_wardrobe", tinymce.plugins.dlm_wardrobe);
+    tinymce.PluginManager.add("dlm_product", tinymce.plugins.dlm_product);
 })(jQuery);
