@@ -126,7 +126,15 @@ class DressLikeMe extends TlView {
                 ?>
 
                 <p>
-                    <label><?php echo ucfirst($opt_name) ?>:</label>
+                    <label>
+                        <?php
+                        if($opt_name == 'api-key') {
+                            echo 'Access key';
+                        }
+                        if($opt_name == 'name') {
+                            echo 'Username';
+                        }
+                        ?>:</label>
                 </p>
                 <p>
                     <input type="text" name="<?php echo $data_field_name; ?>" style="width: 70%; height: 40px" value="<?php echo $opt_val; ?>">
