@@ -12,10 +12,12 @@ class DressLikeMe extends TlView {
     }
 
     public function afterSetupTheme() {
+        $this->saveSettingsPage();
+        add_action('admin_menu', array($this, 'initSettingsPage'));
+
         add_action('wp_enqueue_scripts', array($this, 'enqueueStatic'));
         add_action('wp_ajax_dlm_json_action', array($this, 'getOutfitsFromApi'));
         add_action('wp_ajax_dlm_product_json_action', array($this, 'getProductsFromApi'));
-        add_action('admin_menu', array($this, 'initSettingsPage'));
 
         add_filter('mce_external_plugins', array($this, 'enqueuePluginScripts'));
         add_filter('mce_buttons', array($this, 'registerButtonsEditor'));
@@ -97,67 +99,24 @@ class DressLikeMe extends TlView {
     }
 
     public function getSettingsPage() {
-        if (!current_user_can('manage_options'))
-        {
+        if (!current_user_can('manage_options')) {
             wp_die( __('You do not have sufficient permissions to access this page.') );
         }
 
-        echo '<div class="wrap">';
+        $this->view('settings');
+    }
 
-        echo "<h2>" . __('DressLikeMe Plugin Settings', 'menu-test') . "</h2>";
+    private function saveSettingsPage()
+    {
+        if (!isset($_POST['dlm_submit_hidden']) || $_POST['dlm_submit_hidden'] !== 'Y') {
+            return;
+        }
 
-        ?>  <form name="dlm-settings-form" method="post" action="">
-            <input type="hidden" name="mt_submit_hidden" value="Y">
-            <?php
+        update_option('dlm-name', $_POST['dlm-name']);
+        update_option('dlm-api-key', $_POST['dlm-api-key']);
 
-            $options = ['name', 'api-key'];
-            foreach($options as $opt_name) {
-
-                $data_field_name = $opt_name . 'mt_val';
-
-                $opt_val = get_option('dlm-'.$opt_name);
-
-                if (isset($_POST['mt_submit_hidden']) && $_POST['mt_submit_hidden'] == 'Y') {
-                    $opt_val = $_POST[$data_field_name];
-
-                    update_option('dlm-'.$opt_name, $opt_val);
-                }
-
-                ?>
-
-                <p>
-                    <label>
-                        <?php
-                        if($opt_name == 'api-key') {
-                            echo 'Access key';
-                        }
-                        if($opt_name == 'name') {
-                            echo 'Username';
-                        }
-                        ?>
-                    </label>
-                </p>
-                <p>
-                    <input type="text" name="<?php echo $data_field_name; ?>" style="width: 70%; height: 40px" value="<?php echo $opt_val; ?>">
-                </p>
-
-                <?php
-            }
-            ?>
-
-            <p class="submit">
-                <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>"/>
-            </p>
-        </form>
-        <hr>
-        <h3>
-            Get your access codes here:<br>
-            <a href="https://dresslikeme.com/member/profile/credentials">Link</a>
-        </h3>
-
-        </div>
-
-        <?php
+        header('Location: '.admin_url('admin.php?page=dlm&saved=true'));
+        exit();
     }
 
     private function getWpCountry() {
