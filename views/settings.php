@@ -44,13 +44,10 @@
         <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>"/>
     </p>
 </form>
-        <hr>
-        <h3>
-            Get your access codes here:<br>
-            <a href="https://dresslikeme.com/member/profile/credentials">Link</a>
-        </h3>
+<hr>
+    <h3>
+    Get your access codes here:<br>
+    <a href="https://dresslikeme.com/member/profile/credentials">Link</a>
+    </h3>
 
-        </div>
-
-        <?php
-    }
+</div>

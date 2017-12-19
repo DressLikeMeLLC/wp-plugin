@@ -93,7 +93,7 @@ class DressLikeMe extends TlView {
     }
 
     public function initSettingsPage() {
-        add_menu_page( 'DressLikeMe Settings', 'DLM', 'manage_options', 'dlm', array($this, 'getSettingsPage'), 'https://dresslikeme.com/img/logo.svg', null );
+        add_menu_page( 'DressLikeMe Settings', 'DLM', 'manage_options', 'dlm', array($this, 'getSettingsPage'), DLM_CALCULATOR_URL. 'images/dlm-wp-logo.png', null );
     }
 
     public function getSettingsPage() {
