@@ -85,7 +85,7 @@
     }
 
     .products {
-        background: #eee;
+        background: #f4f4f4;
         width: 300px;
         margin: 0 auto;
         padding: 20px;
