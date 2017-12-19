@@ -95,7 +95,7 @@
 
     div.product-div {
         width: 200px;
-        height: 300px;
+        height: 400px;
         border: 3px solid #23282d;
         margin: 20px;
     }
