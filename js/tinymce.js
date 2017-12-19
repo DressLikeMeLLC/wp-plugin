@@ -103,21 +103,6 @@
     tinymce.create('tinymce.plugins.dlm_product', {
 
         init : function(ed, url) {
-            if ($(window).width() > 1600) {
-                var diWidth = 1400;
-            }
-            if ($(window).width() < 1600) {
-                var diWidth = 1100;
-            }
-            if ($(window).width() < 1200) {
-                var diWidth = 800;
-            }
-            if ($(window).width() < 900) {
-                var diWidth = 500;
-            }
-            if ($(window).width() < 600) {
-                var diWidth = 300;
-            }
 
             ed.addButton('dlm_product_button', {
                 title : 'DressLikeMe Product',
@@ -131,7 +116,7 @@
                     {
                         title: 'DressLikeMe Product',
                         file:  url + '/../views/tinymce-product.php',
-                        width: diWidth,
+                        width: 325,
                         height: 800,
                         inline: 1
                     },

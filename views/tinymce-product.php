@@ -40,20 +40,18 @@
             }
 
             $.each(json, function(i, entry) {
-                var $box = $('<a class="product" href="#" data-id="' + entry.id + '" />');
-                $box.append('<div class="product-div"><p><img src="'+ entry.image +'" /></p>');
-                $box.append('<p><strong>'+ entry.title +'</strong></p>');
-                $box.append('<p>'+ entry.price +' '+ entry.currency +'</p>');
-                $box.append('<p><small>'+ entry.id +'</small></p></div>');
+                var $box = $('<a class="product-box" href="#" data-id="' + entry.id + '"/>');
+                $box.append('<div class="products"><div class="product"><div class="img" style="background-image: url('+ entry.image +');"></div><div class="c"><strong>'+ entry.title +'</strong><br><em>'+ entry.price +' '+ entry.currency +'</em><br><small>@'+ entry.feed +'</small></div></div></div>');
 
                 $dlmImages.append($box);
+                $dlmImages.append('<br><br>');
             });
 
             $('div.error-dlm', jqContext).html('');
         })
     });
 
-    $dlmImages.off('click.chooseProduct', 'a.product').on('click.chooseProduct', 'a.product', function(e){
+    $dlmImages.off('click.chooseProduct', 'a.product-box').on('click.chooseProduct', 'a.product-box', function(e){
         e.preventDefault();
 
         var $a = $(this),
@@ -74,6 +72,7 @@
         line-height: 1.4em;
         -webkit-font-smoothing: subpixel-antialiased;
     }
+
     * {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -81,27 +80,57 @@
     }
 
     a {
-        color: black;
         text-decoration: none;
-        float: left;
-        padding: 20px;
-        width: 200px;
+        color: black;
     }
 
-    img {
-        width: 180px;
-        max-height: 250px;
+    .products {
+        background: #eee;
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .products .product {
+        background: #fff;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+        margin: 0 0 20px;
+    }
+
+    .products .product .img {
+        background: no-repeat center top;
+        background-size: contain;
+        height: 180px;
+    }
+
+    .products .product .c {
+        padding: 12px 15px;
+        line-height: 1.3;
+        overflow: hidden;
+    }
+
+    .products .product .c > * {
+        display: block;
+    }
+
+    .products .product .c em,
+    .products .product .c small {
+        padding-top: 4px;
+        color: #888;
+        font-size: 0.9em;
+    }
+
+    .products .product .c em {
+        float: left;
+        font-style: normal;
+    }
+
+    .products .product .c small {
+        float: right;
     }
 
     div.error-dlm {
         color: red;
-    }
-
-    div.product-div {
-        width: 200px;
-        height: 400px;
-        border: 3px solid #23282d;
-        margin: 20px;
     }
 
     input[type="text"] {
