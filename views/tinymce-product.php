@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="error-dlm"></div>
-<form>
+<form class="product-search">
     <input type="text" name="search" id="search" /><br><br>
     <input type="submit" value="Search for this product." />
 </form>
@@ -23,15 +23,17 @@
         jqContext = document.getElementsByTagName("body")[0],
         $dlmImages = $('div.images-dlm', jqContext);
 
+    $('body').off('submit.searchProduct', 'form.product-search').on('submit.searchProduct', 'form.product-search', function(e){
+        e.preventDefault();
+        console.log('hello world');
+    });
     $("form", jqContext).submit(function(event) {
         event.preventDefault();
         $.post(ajaxurl, {
             action: 'dlm_product_json_action',
             search: $("input[name='search']", jqContext).val()
         }, function(data) {
-            console.log(data);
             var json = $.parseJSON(data);
-            console.log(json);
             if (!json || !json.length) {
                 $('div.error-dlm', jqContext).html('Please update the settings of your DressLikeMe plugin and check the entry of the search field.');
                 return;
