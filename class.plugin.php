@@ -134,7 +134,8 @@ class DressLikeMe extends TlView {
                         if($opt_name == 'name') {
                             echo 'Username';
                         }
-                        ?>:</label>
+                        ?>
+                    </label>
                 </p>
                 <p>
                     <input type="text" name="<?php echo $data_field_name; ?>" style="width: 70%; height: 40px" value="<?php echo $opt_val; ?>">

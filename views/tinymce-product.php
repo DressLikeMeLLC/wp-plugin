@@ -35,7 +35,7 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if (!json || !json.length) {
-                $('div.error-dlm', jqContext).html('Please update the settings of your DressLikeMe plugin and check the entry of the search field.');
+                $('div.error-dlm', jqContext).html('Please check the entry of the search field and update the settings of your DressLikeMe plugin.');
                 return;
             }
 
@@ -91,6 +91,10 @@
     img {
         width: 180px;
         max-height: 250px;
+    }
+
+    div.error-dlm {
+        color: red;
     }
 
     div.product-div {
