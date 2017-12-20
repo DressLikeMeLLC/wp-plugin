@@ -23,11 +23,19 @@
         jqContext = document.getElementsByTagName("body")[0],
         $dlmImages = $('div.images-dlm', jqContext);
 
-    $('body').off('submit.searchProduct', 'form.product-search').on('submit.searchProduct', 'form.product-search', function(e){
-        e.preventDefault();
-        console.log('hello world');
+    $.post(ajaxurl, {
+        action: 'dlm_json_action'
+    }, function(data) {
+        var json = $.parseJSON(data);
+        if (!json || !json.length) {
+            $('form', jqContext).html('');
+            $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
+            $('div.error-dlm', jqContext).append('<br>');
+            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+        }
     });
-    $("form", jqContext).submit(function(event) {
+
+    $('form', jqContext).submit(function(event) {
         event.preventDefault();
         $.post(ajaxurl, {
             action: 'dlm_product_json_action',
@@ -35,7 +43,7 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if (!json || !json.length) {
-                $('div.error-dlm', jqContext).append('Please check the entry of the search field and update the settings of your DressLikeMe plugin.');
+                $('div.error-dlm', jqContext).append('Please check the entry of the search field.');
                 $('div.error-dlm', jqContext).append('<br>');
                 $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
                 $('div.error-dlm', jqContext).append('<br>');

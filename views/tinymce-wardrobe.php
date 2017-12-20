@@ -29,17 +29,17 @@
             ajaxurl = passed_arguments.ajaxurl;
         $("input[name='limit']").focus();
 
-        var jq_context = document.getElementsByTagName("body")[0];
+        var jqContext = document.getElementsByTagName("body")[0];
 
         $.post(ajaxurl, {
             action: 'dlm_json_action'
         }, function(data) {
             var json = $.parseJSON(data);
             if (!json || !json.length) {
-                $('form.wardrobe-form', jq_context).html('');
-                $('div.error-dlm', jq_context).append('Please update the settings of your DressLikeMe plugin.');
-                $('div.error-dlm', jq_context).append('<br>');
-                $('div.error-dlm', jq_context).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+                $('form.wardrobe-form', jqContext).html('');
+                $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
+                $('div.error-dlm', jqContext).append('<br>');
+                $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
             }
         });
 
