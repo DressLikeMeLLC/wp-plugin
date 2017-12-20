@@ -8,26 +8,40 @@
     <link rel="stylesheet" id="open-sans-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&amp;subset=latin%2Clatin-ext&amp;ver=4.5.2" type="text/css" media="all">
 </head>
 <body>
-    <form>
+    <div class="error-dlm"></div>
+    <form class="wardrobe-form">
         <p>
             Include the last items of your wardrobe.
         </p>
         <label for="limit">Limit*</label><br />
         <input type="number" min="0" step="1" value="24" name="limit" id="limit" /><br><br>
         <input type="submit" value="Insert Wardrobe" />
+        <br>
+        <p>
+            *Fill in 0 for the whole wardrobe.
+        </p>
     </form>
-    <br>
-    <p>
-        *Fill in 0 for the whole wardrobe.
-    </p>
 
     <script type="text/javascript">
         var passed_arguments = top.tinymce.activeEditor.windowManager.getParams();
 
-        var $ = passed_arguments.jquery;
+        var $ = passed_arguments.jquery,
+            ajaxurl = passed_arguments.ajaxurl;
         $("input[name='limit']").focus();
 
         var jq_context = document.getElementsByTagName("body")[0];
+
+        $.post(ajaxurl, {
+            action: 'dlm_json_action'
+        }, function(data) {
+            var json = $.parseJSON(data);
+            if (!json || !json.length) {
+                $('form.wardrobe-form', jq_context).html('');
+                $('div.error-dlm', jq_context).append('Please update the settings of your DressLikeMe plugin.');
+                $('div.error-dlm', jq_context).append('<br>');
+                $('div.error-dlm', jq_context).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+            }
+        });
 
         $("form", jq_context).submit(function(event) {
             event.preventDefault();
@@ -60,7 +74,6 @@
             box-sizing: border-box;
         }
 
-        input[type="text"],
         input[type="number"] {
             padding: 3px 8px;
             font-size: 1.6em;
@@ -104,6 +117,10 @@
             color: #fff;
             text-decoration: none;
             text-shadow: 0 -1px 1px #006799,1px 0 1px #006799,0 1px 1px #006799,-1px 0 1px #006799;
+        }
+
+        div.error-dlm {
+            color: red;
         }
     </style>
 </body>

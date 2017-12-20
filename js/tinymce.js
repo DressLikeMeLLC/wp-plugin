@@ -20,7 +20,7 @@
                 ed.windowManager.open(
 
                     {
-                        title: 'DressLikeMe Outfit',
+                        title: 'DressLikeMe - Your Outfit',
                         file:  url + '/../views/tinymce-outfit.php',
                         width: diWidth,
                         height: 800,
@@ -42,7 +42,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe Outfit",
+                longname : "DressLikeMe - Your Outfit",
                 author : "dresslikeme.com",
                 version : "1"
             };
@@ -54,7 +54,7 @@
         init : function(ed, url) {
 
             ed.addButton('dlm_wardrobe_button', {
-                title : 'DressLikeMe Wardrobe',
+                title : 'DressLikeMe - Your Wardrobe',
                 cmd : 'dlm_wardrobe_command',
                 icon : 'icon dashicons-businessman'
             });
@@ -62,7 +62,7 @@
             ed.addCommand('dlm_wardrobe_command', function() {
                 ed.windowManager.open(
                     {
-                        title: 'DressLikeMe Wardrobe',
+                        title: 'DressLikeMe - Your Wardrobe',
                         file:  url + '/../views/tinymce-wardrobe.php',
                         width: 325,
                         height: 230,
@@ -71,7 +71,7 @@
 
                     {
                         editor: ed,
-
+                        ajaxurl: ajaxurl,
                         jquery: $
                     }
                 );
@@ -85,7 +85,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe Wardrobe",
+                longname : "DressLikeMe - Your Wardrobe",
                 author : "dresslikeme.com",
                 version : "1"
             };
@@ -97,7 +97,7 @@
         init : function(ed, url) {
 
             ed.addButton('dlm_product_button', {
-                title : 'DressLikeMe Product',
+                title : 'DressLikeMe - Add Product',
                 cmd : 'dlm_product_command',
                 icon : 'icon dashicons-cart'
             });
@@ -106,7 +106,7 @@
                 ed.windowManager.open(
 
                     {
-                        title: 'DressLikeMe Product',
+                        title: 'DressLikeMe - Add Product',
                         file:  url + '/../views/tinymce-product.php',
                         width: 325,
                         height: 800,
@@ -128,7 +128,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe Product",
+                longname : "DressLikeMe - Add Product",
                 author : "dresslikeme.com",
                 version : "1"
             };

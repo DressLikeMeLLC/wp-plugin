@@ -35,7 +35,10 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if (!json || !json.length) {
-                $('div.error-dlm', jqContext).html('Please check the entry of the search field and update the settings of your DressLikeMe plugin.');
+                $('div.error-dlm', jqContext).append('Please check the entry of the search field and update the settings of your DressLikeMe plugin.');
+                $('div.error-dlm', jqContext).append('<br>');
+                $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+                $('div.error-dlm', jqContext).append('<br>');
                 return;
             }
 
@@ -78,7 +81,7 @@
         box-sizing: border-box;
     }
 
-    a {
+    a.product-box {
         text-decoration: none;
         color: black;
     }

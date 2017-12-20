@@ -24,14 +24,25 @@
         var json = $.parseJSON(data);
         if(!json || !json.length) {
             $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
+            $('div.error-dlm', jqContext).append('<br>');
+            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
             return;
         }
 
         $.each(json, function(i, entry) {
             var $box = $('<a class="outfit-box" href="#" data-sid="' + entry.sid + '" />'),
-                date = new Date(entry.created_at * 1000);
+                date = new Date(entry.created_at * 1000),
+                boxString ='';
 
-            $box.append('<div class="outfits"><div class="outfit"><div class="img" style="background-image: url('+ entry.picture +');"></div><div class="c"><strong>'+ entry.sid +'</strong><br><em>'+ date.toDateString() +'</em></div></div></div>');
+            boxString += '<div class="outfit">';
+            boxString += '<div class="img" style="background-image: url('+ entry.picture +');"></div>';
+            boxString += '<div class="c">';
+            boxString += '<strong>'+ entry.sid +'</strong>';
+            boxString += '<small>'+ date.toDateString() +'</small>';
+            boxString += '</div>';
+            boxString += '</div>';
+
+            $box.html(boxString);
 
             $dlmImages.append($box);
         });
@@ -64,55 +75,53 @@
         box-sizing: border-box;
     }
 
-    a {
+    .images-dlm {
+        margin: 0 -10px;
+    }
+
+    a.button-primary {
+
+    }
+
+    a.outfit-box {
+        width: 33.3333%;
         color: black;
         text-decoration: none;
         float: left;
         padding: 10px;
     }
 
-    .outfits {
-        background: #f4f4f4;
-        width: 300px;
-        margin: 0 auto;
-    }
-
-    .outfits .outfit {
+    .outfit {
         background: #fff;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
         margin: 0 0 10px;
     }
 
-    .outfits .outfit .img {
+    .outfit .img {
         background: no-repeat center top;
         background-size: cover;
-        height: 240px;
+        height: 260px;
     }
 
-    .outfits .outfit .c {
+    .outfit .c {
         padding: 12px 15px;
         line-height: 1.3;
         overflow: hidden;
+        text-align: center;
     }
 
-    .outfits .outfit .c > * {
+    .outfit .c > * {
         display: block;
     }
 
-    .outfits .outfit .c em,
-    .outfits .outfit .c small {
+    .outfit .c small {
         padding-top: 4px;
         color: #888;
         font-size: 0.9em;
     }
 
-    .outfits .outfit .c em {
-        float: left;
-        font-style: normal;
-    }
+    .outfit .c strong {
 
-    .outfits .outfit .c small {
-        float: right;
     }
 
     div.error-dlm {
