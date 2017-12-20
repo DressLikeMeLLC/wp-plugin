@@ -85,8 +85,8 @@
 
     .outfits .outfit .img {
         background: no-repeat center top;
-        background-size: contain;
-        height: 180px;
+        background-size: cover;
+        height: 240px;
     }
 
     .outfits .outfit .c {
