@@ -64,7 +64,7 @@
                     {
                         title: 'DressLikeMe Wardrobe',
                         file:  url + '/../views/tinymce-wardrobe.php',
-                        width: 280,
+                        width: 325,
                         height: 230,
                         inline: 1
                     },
