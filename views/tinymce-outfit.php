@@ -37,7 +37,7 @@
         });
     });
 
-    $dlmImages.off('click.chooseProduct', 'a.product').on('click.chooseProduct', 'a.product', function(e){
+    $dlmImages.off('click.chooseProduct', 'a.outfit-box').on('click.chooseProduct', 'a.outfit-box', function(e){
         e.preventDefault();
 
         var $a = $(this),
