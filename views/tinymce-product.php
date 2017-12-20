@@ -138,7 +138,7 @@
         line-height: 100%;
         height: 1.6em;
         max-width: 100%;
-        width: 80%;
+        width: 100%;
         outline: 0;
         margin: 0 0 3px;
         background-color: #fff;
