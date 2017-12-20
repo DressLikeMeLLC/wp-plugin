@@ -11,7 +11,7 @@
             }
 
             ed.addButton('dlm_outfit_button', {
-                title : 'DressLikeMe Outfit',
+                title : 'DressLikeMe - Your Outfit',
                 cmd : 'dlm_outfit_command',
                 icon : 'icon dashicons-products'
             });
