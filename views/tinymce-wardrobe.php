@@ -9,12 +9,17 @@
 </head>
 <body>
     <form>
+        <p>
+            Include the last items of your wardrobe.
+        </p>
         <label for="limit">Limit*</label><br />
         <input type="number" min="0" max="99999999" step="1" value="24" name="limit" id="limit" /><br><br>
         <input type="submit" value="Insert Wardrobe" />
     </form>
     <br>
-    <p>*Fill in 0 for the whole wardrobe.</p>
+    <p>
+        *Fill in 0 for the whole wardrobe.
+    </p>
 
     <script type="text/javascript">
         var passed_arguments = top.tinymce.activeEditor.windowManager.getParams();
