@@ -4,4 +4,5 @@
     <pre>
         <?php echo __('Unfortunately, no ID was passed. Please check the settings of your DressLikeMe plugin.', DLM_TD); ?>
     </pre>
-<?php endif; ?>
+<?php endif;
+?>

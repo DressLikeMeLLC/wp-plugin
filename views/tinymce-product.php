@@ -44,7 +44,6 @@
                 $box.append('<div class="products"><div class="product"><div class="img" style="background-image: url('+ entry.image +');"></div><div class="c"><strong>'+ entry.title +'</strong><br><em>'+ entry.price +' '+ entry.currency +'</em><br><small>@'+ entry.feed +'</small></div></div></div>');
 
                 $dlmImages.append($box);
-                $dlmImages.append('<br><br>');
             });
 
             $('div.error-dlm', jqContext).html('');

@@ -42,10 +42,10 @@ class DressLikeMe extends TlView {
     }
 
     public function outputProduct($attr) {
-        return $this->view('script-product', array(
+        $this->view('script-product', array(
             'id' => trim($attr['id']),
             'name' => get_option('dlm-name')
-        ), true);
+        ));
     }
 
     public function enqueuePluginScripts($plugin_array) {
