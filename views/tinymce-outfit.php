@@ -28,11 +28,10 @@
         }
 
         $.each(json, function(i, entry) {
-            var $box = $('<a class="product" href="#" data-sid="' + entry.sid + '" />'),
+            var $box = $('<a class="outfit-box" href="#" data-sid="' + entry.sid + '" />'),
                 date = new Date(entry.created_at * 1000);
-            $box.append('<p><img src="'+ entry.picture +'" /></p>');
-            $box.append('<p><strong>'+ entry.sid +'</strong></p>');
-            $box.append('<p><small>'+ date.toDateString() +'</small></p>');
+
+            $box.append('<div class="outfits"><div class="outfit"><div class="img" style="background-image: url('+ entry.picture +');"></div><div class="c"><strong>'+ entry.sid +'</strong><br><em>'+ date.toDateString() +'</em></div></div></div>');
 
             $dlmImages.append($box);
         });
@@ -69,7 +68,55 @@
         color: black;
         text-decoration: none;
         float: left;
-        padding: 20px;
+        padding: 10px;
+    }
+
+    .outfits {
+        background: #f4f4f4;
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    .outfits .outfit {
+        background: #fff;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+        margin: 0 0 10px;
+    }
+
+    .outfits .outfit .img {
+        background: no-repeat center top;
+        background-size: contain;
+        height: 180px;
+    }
+
+    .outfits .outfit .c {
+        padding: 12px 15px;
+        line-height: 1.3;
+        overflow: hidden;
+    }
+
+    .outfits .outfit .c > * {
+        display: block;
+    }
+
+    .outfits .outfit .c em,
+    .outfits .outfit .c small {
+        padding-top: 4px;
+        color: #888;
+        font-size: 0.9em;
+    }
+
+    .outfits .outfit .c em {
+        float: left;
+        font-style: normal;
+    }
+
+    .outfits .outfit .c small {
+        float: right;
+    }
+
+    div.error-dlm {
+        color: red;
     }
 </style>
 </body>
