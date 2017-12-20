@@ -43,10 +43,10 @@
             }
         });
 
-        $("form", jq_context).submit(function(event) {
+        $("form", jqContext).submit(function(event) {
             event.preventDefault();
 
-            var input_text = parseInt($("input[name='limit']", jq_context).val(), 10),
+            var input_text = parseInt($("input[name='limit']", jqContext).val(), 10),
                 shortcode = '[wardrobe';
 
             shortcode += ' limit=' + input_text + '';
