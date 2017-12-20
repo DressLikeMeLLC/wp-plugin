@@ -108,7 +108,7 @@
                     {
                         title: 'DressLikeMe - Add Product',
                         file:  url + '/../views/tinymce-product.php',
-                        width: 325,
+                        width: 335,
                         height: 800,
                         inline: 1
                     },

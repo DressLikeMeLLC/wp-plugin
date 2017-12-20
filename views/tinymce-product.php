@@ -10,9 +10,9 @@
 <body>
 <div class="error-dlm"></div>
 <form class="product-search">
-    <input type="text" name="search" id="search" /><br><br>
+    <input type="text" name="search" required id="search" /><br><br>
     <input type="submit" value="Search for this product." />
-</form>
+</form> <br>
 <div class="images-dlm"></div>
 <br>
 
@@ -44,15 +44,28 @@
             var json = $.parseJSON(data);
             if (!json || !json.length) {
                 $('div.error-dlm', jqContext).append('Please check the entry of the search field.');
-                $('div.error-dlm', jqContext).append('<br>');
-                $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
-                $('div.error-dlm', jqContext).append('<br>');
                 return;
             }
 
             $.each(json, function(i, entry) {
-                var $box = $('<a class="product-box" href="#" data-id="' + entry.id + '"/>');
-                $box.append('<div class="products"><div class="product"><div class="img" style="background-image: url('+ entry.image +');"></div><div class="c"><strong>'+ entry.title +'</strong><br><em>'+ entry.price +' '+ entry.currency +'</em><br><small>@'+ entry.feed +'</small></div></div></div>');
+                var $box = $('<a class="product-box" href="#" data-id="' + entry.id + '"/>'),
+                    boxString ='';
+
+                boxString += '<div class="product">';
+                boxString += '<div class="img" style="background-image: url('+ entry.image +');"></div>';
+                boxString += '<div class="c">';
+                boxString += '<strong>'+ entry.title +'</strong>';
+                boxString += '<em>'+ entry.price +' '+ entry.currency +'</em>';
+                boxString += '<small>@'+ entry.feed +'</small>';
+                boxString += '</div>';
+                boxString += '</div>';
+
+                $box.html(boxString);
+
+                $dlmImages.append($box);
+
+
+                $box.append('<br></div></div></div>');
 
                 $dlmImages.append($box);
             });
@@ -94,48 +107,47 @@
         color: black;
     }
 
-    .products {
+    .product {
         background: #f4f4f4;
         width: 300px;
         margin: 0 auto;
         padding: 20px;
     }
 
-    .products .product {
+    .product {
         background: #fff;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
-        margin: 0 0 20px;
     }
 
-    .products .product .img {
+    .product .img {
         background: no-repeat center top;
         background-size: contain;
         height: 180px;
+        margin-bottom: 20px;
     }
 
-    .products .product .c {
-        padding: 12px 15px;
+    .product .c {
         line-height: 1.3;
         overflow: hidden;
     }
 
-    .products .product .c > * {
+    .product .c > * {
         display: block;
     }
 
-    .products .product .c em,
-    .products .product .c small {
+    .product .c em,
+    .product .c small {
         padding-top: 4px;
         color: #888;
         font-size: 0.9em;
     }
 
-    .products .product .c em {
+    .product .c em {
         float: left;
         font-style: normal;
     }
 
-    .products .product .c small {
+    .product .c small {
         float: right;
     }
 
