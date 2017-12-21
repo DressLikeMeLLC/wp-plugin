@@ -9,8 +9,8 @@
         <?php endif;
 
         if($_GET['saved'] == 'false'): ?>
-            <div class="notice notice-fail is-dismissible">
-                <p>We're sorry. There seems to be a problem with your entries.</p>
+            <div class="notice notice-error is-dismissible">
+                <p>Unfortunately, the entered login data are not correct!</p>
             </div>
         <?php endif;
     endif; ?>

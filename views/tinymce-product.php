@@ -11,7 +11,7 @@
 <div class="error-dlm"></div>
 <form class="product-search">
     <input type="text" name="search" required id="search" /><br><br>
-    <input type="submit" value="Search for this product." />
+    <input type="submit" value="Search" />
 </form> <br>
 <div class="images-dlm"></div>
 <br>
@@ -43,10 +43,11 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if (!json || !json.length) {
-                $('div.error-dlm', jqContext).append('Please check the entry of the search field.');
+                $('div.error-dlm', jqContext).append('Please check the input of the search field');
                 return;
             }
 
+            $dlmImages.html('');
             $.each(json, function(i, entry) {
                 var $box = $('<a class="product-box" href="#" data-id="' + entry.id + '"/>'),
                     boxString ='';
