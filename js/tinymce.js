@@ -2,12 +2,14 @@
     tinymce.create('tinymce.plugins.dlm_outfit', {
 
         init : function(ed, url) {
+            if($(window).width() > 900) {
+                var diWidth = 680;
+            }
             if ($(window).width() < 900) {
                 var diWidth = 500;
-            } else if ($(window).width() < 600) {
+            }
+            if ($(window).width() < 600) {
                 var diWidth = 300;
-            } else {
-                var diWidth = 680;
             }
 
             ed.addButton('dlm_outfit_button', {
