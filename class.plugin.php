@@ -123,6 +123,13 @@ class DressLikeMe extends TlView {
             return;
         }
 
+        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. $_POST['dlm-name'] .'/'. $_POST['dlm-api-key'] .'/check');
+        $arr = json_decode($response['body'], true);
+        if (!$arr['success']) {
+            header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
+            exit();
+        }
+
         update_option('dlm-name', $_POST['dlm-name']);
         update_option('dlm-api-key', $_POST['dlm-api-key']);
 
