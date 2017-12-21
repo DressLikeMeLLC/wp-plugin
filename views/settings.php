@@ -1,11 +1,19 @@
 <div class="wrap">
     <h2>DLM Settings</h2>
 
-    <?php if(!empty($_GET['saved'])): ?>
+    <?php if(!empty($_GET['saved'])):
+        if($_GET['saved'] == 'true'): ?>
         <div class="notice notice-success is-dismissible">
             <p>Thank you very much! Your changes have been saved successfully!</p>
         </div>
-    <?php endif; ?>
+        <?php endif;
+
+        if($_GET['saved'] == 'false'): ?>
+            <div class="notice notice-fail is-dismissible">
+                <p>We're sorry. There seems to be a problem with your entries.</p>
+            </div>
+        <?php endif;
+    endif; ?>
 
     <h3>1.) Get your access data</h3>
     <p>

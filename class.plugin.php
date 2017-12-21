@@ -16,6 +16,7 @@ class DressLikeMe extends TlView {
         add_action('admin_menu', array($this, 'initSettingsPage'));
 
         add_action('wp_enqueue_scripts', array($this, 'enqueueStatic'));
+        add_action('wp_ajax_dlm_check_api_action', array($this, 'checkApiSettings'));
         add_action('wp_ajax_dlm_json_action', array($this, 'getOutfitsFromApi'));
         add_action('wp_ajax_dlm_product_json_action', array($this, 'getProductsFromApi'));
 
@@ -71,6 +72,16 @@ class DressLikeMe extends TlView {
         wp_enqueue_style('dresslikeme-button', DLM_CALCULATOR_URL.'css/tinymce.css');
     }
 
+    public function checkApiSettings()
+    {
+        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check');
+        if (!is_array( $response ) || empty($response['body'])) {
+            exit(null);
+        }
+
+        exit($response['body']);
+    }
+
     public function getOutfitsFromApi()
     {
         $response = wp_remote_get('https://dresslikeme.com/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/entries');
@@ -110,6 +121,13 @@ class DressLikeMe extends TlView {
     {
         if (!isset($_POST['dlm_submit_hidden']) || $_POST['dlm_submit_hidden'] !== 'Y') {
             return;
+        }
+
+        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. $_POST['dlm-name'] .'/'. $_POST['dlm-api-key'] .'/check');
+        $arr = json_decode($response['body'], true);
+        if (!$arr['success']) {
+            header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
+            exit();
         }
 
         update_option('dlm-name', $_POST['dlm-name']);

@@ -19,34 +19,46 @@
         $dlmImages = $('div.images-dlm', jqContext);
 
     $.post(ajaxurl, {
-        action: 'dlm_json_action'
+        action: 'dlm_check_api_action'
     }, function(data) {
         var json = $.parseJSON(data);
-        if(!json || !json.length) {
-            $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
+        if(!json['success']) {
+            $('div.error-dlm', jqContext).append('Please check the settings of your DressLikeMe plugin.');
             $('div.error-dlm', jqContext).append('<br>');
             $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
             return;
         }
 
-        $.each(json, function(i, entry) {
-            var $box = $('<a class="outfit-box" href="#" data-sid="' + entry.sid + '" />'),
-                date = new Date(entry.created_at * 1000),
-                boxString ='';
+        $.post(ajaxurl, {
+            action: 'dlm_json_action'
+        }, function(data) {
+            var json = $.parseJSON(data);
+            if(!json || !json.length) {
+                $('div.error-dlm', jqContext).append('Seems like you haven\'t uploaded any outfits yet.');
+                return;
+            }
 
-            boxString += '<div class="outfit">';
-            boxString += '<div class="img" style="background-image: url('+ entry.picture +');"></div>';
-            boxString += '<div class="c">';
-            boxString += '<strong>'+ entry.sid +'</strong>';
-            boxString += '<small>'+ date.toDateString() +'</small>';
-            boxString += '</div>';
-            boxString += '</div>';
+            $.each(json, function(i, entry) {
+                var $box = $('<a class="outfit-box" href="#" data-sid="' + entry.sid + '" />'),
+                    date = new Date(entry.created_at * 1000),
+                    boxString ='';
 
-            $box.html(boxString);
+                boxString += '<div class="outfit">';
+                boxString += '<div class="img" style="background-image: url('+ entry.picture +');"></div>';
+                boxString += '<div class="c">';
+                boxString += '<strong>'+ entry.sid +'</strong>';
+                boxString += '<small>'+ date.toDateString() +'</small>';
+                boxString += '</div>';
+                boxString += '</div>';
 
-            $dlmImages.append($box);
+                $box.html(boxString);
+
+                $dlmImages.append($box);
+            });
         });
     });
+
+
 
     $dlmImages.off('click.chooseProduct', 'a.outfit-box').on('click.chooseProduct', 'a.outfit-box', function(e){
         e.preventDefault();
