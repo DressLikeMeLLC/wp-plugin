@@ -91,6 +91,18 @@
         padding: 10px;
     }
 
+    @media (min-width: 601px) {
+        a.outfit-box {
+            width: 33.3%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        a.outfit-box {
+            width: 100%;
+        }
+    }
+
     .outfit {
         background: #fff;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
