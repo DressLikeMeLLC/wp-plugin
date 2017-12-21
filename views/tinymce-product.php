@@ -24,10 +24,10 @@
         $dlmImages = $('div.images-dlm', jqContext);
 
     $.post(ajaxurl, {
-        action: 'dlm_json_action'
+        action: 'dlm_check_api_action'
     }, function(data) {
         var json = $.parseJSON(data);
-        if (!json || !json.length) {
+        if(!json['success']) {
             $('form', jqContext).html('');
             $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
             $('div.error-dlm', jqContext).append('<br>');

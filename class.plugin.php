@@ -16,6 +16,7 @@ class DressLikeMe extends TlView {
         add_action('admin_menu', array($this, 'initSettingsPage'));
 
         add_action('wp_enqueue_scripts', array($this, 'enqueueStatic'));
+        add_action('wp_ajax_dlm_check_api_action', array($this, 'checkApiSettings'));
         add_action('wp_ajax_dlm_json_action', array($this, 'getOutfitsFromApi'));
         add_action('wp_ajax_dlm_product_json_action', array($this, 'getProductsFromApi'));
 
@@ -69,6 +70,16 @@ class DressLikeMe extends TlView {
 
     public function buttonCss() {
         wp_enqueue_style('dresslikeme-button', DLM_CALCULATOR_URL.'css/tinymce.css');
+    }
+
+    public function checkApiSettings()
+    {
+        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check');
+        if (!is_array( $response ) || empty($response['body'])) {
+            exit(null);
+        }
+
+        exit($response['body']);
     }
 
     public function getOutfitsFromApi()
