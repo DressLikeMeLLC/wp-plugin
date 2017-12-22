@@ -13,9 +13,7 @@ This WordPress plugin brings the full functionality of the DressLikeMe platform 
 
 == Description ==
 
-This WordPress plugin brings the full functionality of the DressLikeMe platform directly to your blog.
-You can share the products of all outfits linked to dresslikeme.com with your readers in just two mouse clicks.
-You can also embed individual products or display your entire wardrobe.
+This WordPress plugin brings the full functionality of the DressLikeMe platform directly to your blog. You can share the products of all outfits linked to dresslikeme.com with your readers in just two mouse clicks. You can also embed individual products or display your entire wardrobe.
 
 == Installation ==
 
@@ -28,6 +26,10 @@ You can also embed individual products or display your entire wardrobe.
 == Frequently Asked Questions ==
 
 == Screenshots ==
+1. You can store your personal access data in the plugin settings
+2. In the WordPress editor you will find three new buttons: One of these allows you to search directly for products
+3. After clicking on a product a short code is added to the editor
+4. The product will appear on your blog
 
 == Changelog ==
 

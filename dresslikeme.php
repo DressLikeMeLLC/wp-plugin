@@ -3,7 +3,7 @@
 Plugin Name: DressLikeMe
 Plugin URI: https://dresslikeme.com
 Description: Get inspired by the worldwide most popular fashion trends and publish your favourite outfit.
-Author: DressLikeMe
+Author: DressLikeMe LLC
 Version: 1.0
 */
 
