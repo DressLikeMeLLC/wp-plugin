@@ -33,6 +33,9 @@ This WordPress plugin brings the full functionality of the DressLikeMe platform 
 
 == Changelog ==
 
+= 1.0.1 =
+* Added assets
+
 = 1.0 =
 * First version
 
