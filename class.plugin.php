@@ -119,19 +119,26 @@ class DressLikeMe extends TlView {
 
     private function saveSettingsPage()
     {
-        if (!isset($_POST['dlm_submit_hidden']) || $_POST['dlm_submit_hidden'] !== 'Y') {
+        if (!isset($_POST['dlm_submit_hidden']) || sanitize_text_field($_POST['dlm_submit_hidden']) !== 'Y') {
             return;
         }
 
-        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. $_POST['dlm-name'] .'/'. $_POST['dlm-api-key'] .'/check');
+        $name = sanitize_text_field($_POST['dlm-name']);
+        $key = sanitize_text_field($_POST['dlm-api-key']);
+
+        if(!$response = wp_remote_get('https://dresslikeme.com/api/v1/'. $name .'/'. $key .'/check')) {
+	        header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
+	        exit();
+        }
+
         $arr = json_decode($response['body'], true);
-        if (!$arr['success']) {
+        if (empty($arr) || !$arr['success']) {
             header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
             exit();
         }
 
-        update_option('dlm-name', $_POST['dlm-name']);
-        update_option('dlm-api-key', $_POST['dlm-api-key']);
+        update_option('dlm-name', $name);
+        update_option('dlm-api-key', $key);
 
         header('Location: '.admin_url('admin.php?page=dlm&saved=true'));
         exit();
