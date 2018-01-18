@@ -36,6 +36,7 @@ class DressLikeMe extends TlView {
     public function initWidgets() {
         register_widget( 'dlm_wardrobe_widget' );
         register_widget( 'dlm_profile_widget' );
+        register_widget( 'dlm_outfit_widget' );
     }
 
     public function outputOutfit($attr) {
