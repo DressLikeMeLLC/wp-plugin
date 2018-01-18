@@ -20,6 +20,8 @@ class DressLikeMe extends TlView {
         add_action('wp_ajax_dlm_json_action', array($this, 'getOutfitsFromApi'));
         add_action('wp_ajax_dlm_product_json_action', array($this, 'getProductsFromApi'));
 
+        add_action( 'widgets_init', array($this, 'initWidgets'));
+
         add_filter('mce_external_plugins', array($this, 'enqueuePluginScripts'));
         add_filter('mce_buttons', array($this, 'registerButtonsEditor'));
         add_filter('admin_enqueue_scripts', array($this, 'buttonCss'));
@@ -27,6 +29,15 @@ class DressLikeMe extends TlView {
         add_shortcode('outfit', array($this, 'outputOutfit'));
         add_shortcode('wardrobe', array($this, 'outputWardrobe'));
         add_shortcode('product', array($this, 'outputProduct'));
+        add_shortcode('profile', array($this, 'outputProfile'));
+        add_shortcode('outfits', array($this, 'outputOutfits'));
+    }
+
+    public function initWidgets() {
+        register_widget( 'dlm_wardrobe_widget' );
+        register_widget( 'dlm_profile_widget' );
+        register_widget( 'dlm_outfit_widget' );
+        register_widget( 'dlm_outfits_widget' );
     }
 
     public function outputOutfit($attr) {
@@ -35,9 +46,22 @@ class DressLikeMe extends TlView {
         ), true);
     }
 
+    public function outputOutfits($attr) {
+        return $this->view('script-outfits', array(
+            'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
+            'name' => get_option('dlm-name')
+        ), true);
+    }
+
     public function outputWardrobe($attr) {
         return $this->view('script-wardrobe', array(
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
+            'name' => get_option('dlm-name')
+        ), true);
+    }
+
+    public function outputProfile() {
+        return $this->view('script-profile', array(
             'name' => get_option('dlm-name')
         ), true);
     }
@@ -51,7 +75,7 @@ class DressLikeMe extends TlView {
 
     public function enqueuePluginScripts($plugin_array) {
         $plugin_array['dlm_outfit'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
-        $plugin_array['dlm_wardrobe'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
+        $plugin_array['dlm_wardrobeWidget'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
         $plugin_array['dlm_product'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
         return $plugin_array;
     }
