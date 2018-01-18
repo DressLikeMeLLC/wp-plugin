@@ -13,6 +13,7 @@ define('DLM_TD', 'dresslikeme');
 
 require_once(DLM_CALCULATOR_PATH.'widgets/dlm_widgets.php');
 require_once(DLM_CALCULATOR_PATH.'widgets/dlm_wardrobe_widget.php');
+require_once(DLM_CALCULATOR_PATH.'widgets/dlm_profile_widget.php');
 
 require_once(DLM_CALCULATOR_PATH.'class.tl-view.php');
 require_once(DLM_CALCULATOR_PATH.'class.plugin.php');
