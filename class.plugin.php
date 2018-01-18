@@ -27,8 +27,10 @@ class DressLikeMe extends TlView {
         add_filter('admin_enqueue_scripts', array($this, 'buttonCss'));
 
         add_shortcode('outfit', array($this, 'outputOutfit'));
-        add_shortcode('dlmwardrobe', array($this, 'outputWardrobe'));
+        add_shortcode('wardrobe', array($this, 'outputWardrobe'));
         add_shortcode('product', array($this, 'outputProduct'));
+        add_shortcode('profile', array($this, 'outputProfile'));
+        add_shortcode('outfits', array($this, 'outputOutfits'));
     }
 
     public function initWidgets() {
