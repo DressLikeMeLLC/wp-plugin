@@ -43,9 +43,22 @@ class DressLikeMe extends TlView {
         ), true);
     }
 
+    public function outputOutfits($attr) {
+        return $this->view('script-outfits', array(
+            'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
+            'name' => get_option('dlm-name')
+        ), true);
+    }
+
     public function outputWardrobe($attr) {
         return $this->view('script-wardrobe', array(
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
+            'name' => get_option('dlm-name')
+        ), true);
+    }
+
+    public function outputProfile() {
+        return $this->view('script-profile', array(
             'name' => get_option('dlm-name')
         ), true);
     }
