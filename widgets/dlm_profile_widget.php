@@ -3,7 +3,7 @@ class dlm_profile_widget extends dlm_widgets {
 
     // Main constructor
     public function __construct() {
-        parent::__construct('dlm_profile_widget', 'DLM Profile Widget', [
+        parent::__construct('dlm_profile_widget', 'DLM Profile', [
             'customize_selective_refresh' => true,
         ]);
     }

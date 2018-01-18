@@ -3,7 +3,7 @@ class dlm_outfit_widget extends dlm_widgets {
 
     // Main constructor
     public function __construct() {
-        parent::__construct('dlm_outfit_widget', 'DLM Outfit Products Widget', [
+        parent::__construct('dlm_outfit_widget', 'DLM Outfit Products', [
             'customize_selective_refresh' => true,
         ]);
     }

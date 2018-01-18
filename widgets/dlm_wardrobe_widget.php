@@ -3,7 +3,7 @@ class dlm_wardrobe_widget extends dlm_widgets {
 
     // Main constructor
     public function __construct() {
-        parent::__construct('dlm_wardrobe_widget', 'DLM Wardrobe Widget', [
+        parent::__construct('dlm_wardrobe_widget', 'DLM Wardrobe', [
             'customize_selective_refresh' => true,
         ]);
     }
