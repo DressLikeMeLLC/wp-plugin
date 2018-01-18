@@ -75,7 +75,7 @@ class DressLikeMe extends TlView {
 
     public function enqueuePluginScripts($plugin_array) {
         $plugin_array['dlm_outfit'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
-        $plugin_array['dlm_wardrobeWidget'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
+        $plugin_array['dlm_wardrobe'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
         $plugin_array['dlm_product'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
         return $plugin_array;
     }
