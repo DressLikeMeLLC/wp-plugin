@@ -77,6 +77,8 @@ class DressLikeMe extends TlView {
         $plugin_array['dlm_outfit'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
         $plugin_array['dlm_wardrobe'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
         $plugin_array['dlm_product'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
+        $plugin_array['dlm_outfits'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
+        $plugin_array['dlm_profile'] =  DLM_CALCULATOR_URL.'js/tinymce.js';
         return $plugin_array;
     }
 
@@ -89,6 +91,8 @@ class DressLikeMe extends TlView {
         array_push($buttons, 'dlm_outfit_button');
         array_push($buttons, 'dlm_wardrobe_button');
         array_push($buttons, 'dlm_product_button');
+        array_push($buttons, 'dlm_outfits_button');
+        array_push($buttons, 'dlm_profile_button');
         return $buttons;
     }
 
