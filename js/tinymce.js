@@ -51,6 +51,49 @@
         }
     });
 
+    tinymce.create('tinymce.plugins.dlm_profile', {
+
+        init : function(ed, url) {
+
+            ed.addButton('dlm_profile_button', {
+                title : 'DressLikeMe - Your Profile',
+                cmd : 'dlm_profile_command',
+                icon : 'icon dashicons-admin-users'
+            });
+
+            ed.addCommand('dlm_profile_command', function() {
+                ed.windowManager.open(
+
+                    {
+                        title: 'DressLikeMe - Your Profile',
+                        file:  url + '/../views/tinymce-profile.php',
+                        width: 325,
+                        height: 210,
+                        inline: 1
+                    },
+
+                    {
+                        editor: ed,
+                        jquery: $,
+                        ajaxurl: ajaxurl
+                    }
+                );
+            });
+        },
+
+        createControl : function(n, cm) {
+            return null;
+        },
+
+        getInfo : function() {
+            return {
+                longname : "DressLikeMe - Your Profile",
+                author : "dresslikeme.com",
+                version : "1"
+            };
+        }
+    });
+
     tinymce.create('tinymce.plugins.dlm_outfits', {
 
         init : function(ed, url) {
@@ -184,4 +227,5 @@
     tinymce.PluginManager.add("dlm_outfits", tinymce.plugins.dlm_outfits);
     tinymce.PluginManager.add("dlm_wardrobe", tinymce.plugins.dlm_wardrobe);
     tinymce.PluginManager.add("dlm_product", tinymce.plugins.dlm_product);
+    tinymce.PluginManager.add("dlm_profile", tinymce.plugins.dlm_profile);
 })(jQuery);
