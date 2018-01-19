@@ -5,7 +5,7 @@ Tags: dresslikeme, fashion, outfits
 Requires at least: 4.9.1
 Tested up to: 4.9.2
 Requires PHP: 5.2.4
-Stable tag: 1.0.4
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ This WordPress plugin brings the full functionality of the DressLikeMe platform 
 4. The product will appear on your blog
 
 == Changelog ==
+
+= 1.1 =
+* Added recent outfits and profile badge features
+* Added new widgets for all features
 
 = 1.0.1 =
 * Added assets

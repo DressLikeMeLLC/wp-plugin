@@ -11,14 +11,14 @@
     <div class="error-dlm"></div>
     <form class="outfits-form">
         <p>
-            Include your most recent outfits.
+            Include your most recent outfits
         </p>
-        <label for="limit">Limit*</label><br>
+        <label for="limit">Limit *</label><br>
         <input type="number" min="0" step="1" value="24" name="limit" id="limit" required><br><br>
         <input type="submit" value="Insert Outfits">
         <br>
         <p>
-            *Fill in 0 for all outfits.
+            * Select 0 for all outfits
         </p>
     </form>
 
