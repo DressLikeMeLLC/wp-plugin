@@ -4,6 +4,7 @@ class DressLikeMe extends TlView {
     public function __construct() {
         $this->setViewPath(DLM_CALCULATOR_PATH . 'views/');
         $this->init();
+        $this->initTranslations();
     }
 
     private function init()
@@ -23,7 +24,7 @@ class DressLikeMe extends TlView {
 
         add_action('widgets_init', array($this, 'initWidgets'));
 
-        add_action( 'admin_head', array($this, 'adminHead'));
+        add_action('admin_head', array($this, 'adminHead'));
 
         add_filter('mce_external_plugins', array($this, 'enqueuePluginScripts'));
         add_filter('mce_buttons', array($this, 'registerButtonsEditor'));
