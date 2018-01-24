@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: DressLikeMe\n"
-"POT-Creation-Date: 2018-01-23 16:10+0100\n"
+"POT-Creation-Date: 2018-01-24 10:30+0100\n"
 "PO-Revision-Date: 2018-01-23 16:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,13 +16,89 @@ msgstr ""
 "X-Poedit-WPHeader: dresslikeme.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class.plugin.php:147
+#: class.plugin.php:153
 msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: views/admin-head.php:3
+msgid "DressLikeMe - Your Wardrobe"
+msgstr ""
+
+#: views/admin-head.php:4
+msgid "DressLikeMe - Outfit Products"
+msgstr ""
+
+#: views/admin-head.php:5
+msgid "DressLikeMe - Your Profile"
+msgstr ""
+
+#: views/admin-head.php:6
+msgid "DressLikeMe - Recent Outfits"
+msgstr ""
+
+#: views/admin-head.php:7
+msgid "DressLikeMe - Single Product"
+msgstr ""
+
+#: views/admin-head.php:8
+msgid "Please check the settings of your DressLikeMe plugin."
+msgstr ""
+
+#: views/admin-head.php:9
+msgid "Your settings"
+msgstr ""
+
+#: views/admin-head.php:10
+msgid "Seems like there are no uploaded outfits yet."
+msgstr ""
+
+#: views/admin-head.php:11
+msgid "Include your most recent outfits"
+msgstr ""
+
+#: views/admin-head.php:12
+msgid "* Select 0 for all outfits"
+msgstr ""
+
+#: views/admin-head.php:13
+msgid "Insert outfits"
+msgstr ""
+
+#: views/admin-head.php:14
+msgid "Limit *"
+msgstr ""
+
+#: views/admin-head.php:15
+msgid "Include your profile page."
+msgstr ""
+
+#: views/admin-head.php:16
+msgid "Insert profile"
+msgstr ""
+
+#: views/admin-head.php:17
+msgid "Include the last products of your wardrobe."
+msgstr ""
+
+#: views/admin-head.php:18
+msgid "* Select 0 for the whole wardrobe"
+msgstr ""
+
+#: views/admin-head.php:19
+msgid "Please check the input of the search field"
+msgstr ""
+
+#: views/admin-head.php:20
+msgid "Search"
+msgstr ""
+
+#: views/admin-head.php:21
+msgid "Insert wardrobe"
 msgstr ""
 
 #: views/script-outfit.php:5
@@ -61,13 +137,14 @@ msgstr ""
 
 #: views/settings.php:20
 msgid ""
-"Click on the following button to be redirected to your DressLikeMe profile.\n"
+"Click on the following button to be redirected to your DressLikeMe "
+"profile.\n"
 "        You will receive your access data there, which you can copy and "
 "enter below."
 msgstr ""
 
 #: views/settings.php:23
-msgid "To the access data"
+msgid "Open access settings"
 msgstr ""
 
 #: views/settings.php:27
@@ -86,17 +163,57 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: widgets/dlm_outfit_widget.php:26 widgets/dlm_outfits_widget.php:26
-#: widgets/dlm_profile_widget.php:25 widgets/dlm_wardrobe_widget.php:26
+#: widgets/dlm_outfit_widget.php:6
+msgid "DLM Outfit Products"
+msgstr ""
+
+#: widgets/dlm_outfit_widget.php:8
+msgid "All products from one of your DressLikeMe outfits."
+msgstr ""
+
+#: widgets/dlm_outfit_widget.php:31 widgets/dlm_outfits_widget.php:31
+#: widgets/dlm_profile_widget.php:29 widgets/dlm_wardrobe_widget.php:30
 msgid "Title:"
 msgstr ""
 
-#: widgets/dlm_outfit_widget.php:31
+#: widgets/dlm_outfit_widget.php:36
 msgid "Outfit ID:"
 msgstr ""
 
-#: widgets/dlm_outfits_widget.php:31 widgets/dlm_wardrobe_widget.php:31
+#: widgets/dlm_outfits_widget.php:6
+msgid "DLM Recent Outfits"
+msgstr ""
+
+#: widgets/dlm_outfits_widget.php:8
+msgid "Displays your last DressLikeMe outfits."
+msgstr ""
+
+#: widgets/dlm_outfits_widget.php:36 widgets/dlm_wardrobe_widget.php:35
 msgid "Limit:"
+msgstr ""
+
+#: widgets/dlm_profile_widget.php:6
+msgid "DLM Profile"
+msgstr ""
+
+#: widgets/dlm_profile_widget.php:8
+msgid "Displays your DressLikeMe profile."
+msgstr ""
+
+#: widgets/dlm_wardrobe_widget.php:6
+msgid "DLM Wardrobe"
+msgstr ""
+
+#: widgets/dlm_wardrobe_widget.php:8
+msgid "Displays your DressLikeMe wardrobe."
+msgstr ""
+
+#: widgets/dlm_widgets.php:24
+msgid "Please update the settings of your DressLikeMe Plugin."
+msgstr ""
+
+#: widgets/dlm_widgets.php:26
+msgid "Your Settings"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
