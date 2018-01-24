@@ -8,6 +8,7 @@ class DressLikeMe extends TlView {
 
     private function init()
     {
+        add_action('init', array($this, 'initTranslations'));
         add_action('after_setup_theme', array($this, 'afterSetupTheme'));
     }
 
@@ -20,7 +21,9 @@ class DressLikeMe extends TlView {
         add_action('wp_ajax_dlm_json_action', array($this, 'getOutfitsFromApi'));
         add_action('wp_ajax_dlm_product_json_action', array($this, 'getProductsFromApi'));
 
-        add_action( 'widgets_init', array($this, 'initWidgets'));
+        add_action('widgets_init', array($this, 'initWidgets'));
+
+        add_action( 'admin_head', array($this, 'adminHead'));
 
         add_filter('mce_external_plugins', array($this, 'enqueuePluginScripts'));
         add_filter('mce_buttons', array($this, 'registerButtonsEditor'));
@@ -33,11 +36,19 @@ class DressLikeMe extends TlView {
         add_shortcode('outfits', array($this, 'outputOutfits'));
     }
 
+    public function initTranslations() {
+        load_plugin_textdomain( DLM_TD, false, 'dresslikeme/languages' );
+    }
+
     public function initWidgets() {
         register_widget( 'dlm_wardrobe_widget' );
         register_widget( 'dlm_profile_widget' );
         register_widget( 'dlm_outfit_widget' );
         register_widget( 'dlm_outfits_widget' );
+    }
+
+    public function adminHead() {
+        $this->view('admin-head');
     }
 
     public function outputOutfit($attr) {
@@ -139,7 +150,7 @@ class DressLikeMe extends TlView {
 
     public function getSettingsPage() {
         if (!current_user_can('manage_options')) {
-            wp_die( __('You do not have sufficient permissions to access this page.') );
+            wp_die( __('You do not have sufficient permissions to access this page.', DLM_TD) );
         }
 
         $this->view('settings');

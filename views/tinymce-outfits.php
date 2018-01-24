@@ -9,27 +9,19 @@
 </head>
 <body>
     <div class="error-dlm"></div>
+    <div class="success-dlm">
+    </div>
     <form class="outfits-form">
-        <p>
-            Include your most recent outfits
-        </p>
-        <label for="limit">Limit *</label><br>
-        <input type="number" min="0" step="1" value="24" name="limit" id="limit" required><br><br>
-        <input type="submit" value="Insert Outfits">
-        <br>
-        <p>
-            * Select 0 for all outfits
-        </p>
     </form>
+    <div class="success-dlm-2">
+    </div>
 
     <script type="text/javascript">
-        var passed_arguments = top.tinymce.activeEditor.windowManager.getParams();
-
-        var $ = passed_arguments.jquery,
-            ajaxurl = passed_arguments.ajaxurl;
-        $("input[name='limit']").focus();
-
-        var jqContext = document.getElementsByTagName("body")[0];
+        var passed_arguments = top.tinymce.activeEditor.windowManager.getParams(),
+            $ = passed_arguments.jquery,
+            ajaxurl = passed_arguments.ajaxurl,
+            dlmTranslations = passed_arguments.dlmTranslations,
+            jqContext = document.getElementsByTagName("body")[0];
 
         $.post(ajaxurl, {
             action: 'dlm_check_api_action'
@@ -37,9 +29,15 @@
             var json = $.parseJSON(data);
             if(!json['success']) {
                 $('form.outfits-form', jqContext).html('');
-                $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
+                $('div.error-dlm', jqContext).append(dlmTranslations.plchset);
                 $('div.error-dlm', jqContext).append('<br>');
-                $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+                $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">'+ yourset +'</a>');
+            } else {
+                $('div.success-dlm', jqContext).append(dlmTranslations.morecout);
+                $('form.outfits-form', jqContext).append('<br><label for="limit">'+ dlmTranslations.limit +'</label><br>');
+                $('form.outfits-form', jqContext).append('<input type="number" min="0" step="1" value="24" name="limit" id="limit" required><br>');
+                $('form.outfits-form', jqContext).append('<input type="submit" value="'+ dlmTranslations.insout +'"><br>');
+                $('div.success-dlm-2', jqContext).append(dlmTranslations.oforall);
             }
         });
 

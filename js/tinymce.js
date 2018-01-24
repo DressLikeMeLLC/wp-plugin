@@ -13,7 +13,7 @@
             }
 
             ed.addButton('dlm_outfit_button', {
-                title : 'DressLikeMe - Outfits Products',
+                title : dlmTranslations.outfit,
                 cmd : 'dlm_outfit_command',
                 icon : 'icon dashicons-products'
             });
@@ -22,7 +22,7 @@
                 ed.windowManager.open(
 
                     {
-                        title: 'DressLikeMe - Outfit Products',
+                        title: dlmTranslations.outfit,
                         file:  url + '/../views/tinymce-outfit.php',
                         width: diWidth,
                         height: 800,
@@ -32,6 +32,7 @@
                     {
                         editor: ed,
                         jquery: $,
+                        dlmTranslations: dlmTranslations,
                         ajaxurl: ajaxurl
                     }
                 );
@@ -44,7 +45,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe - Recent Outfits",
+                longname : dlmTranslations.outfit,
                 author : "dresslikeme.com",
                 version : "1"
             };
@@ -56,7 +57,7 @@
         init : function(ed, url) {
 
             ed.addButton('dlm_profile_button', {
-                title : 'DressLikeMe - Your Profile',
+                title : dlmTranslations.profile,
                 cmd : 'dlm_profile_command',
                 icon : 'icon dashicons-format-image'
             });
@@ -65,7 +66,7 @@
                 ed.windowManager.open(
 
                     {
-                        title: 'DressLikeMe - Your Profile',
+                        title: dlmTranslations.profile,
                         file:  url + '/../views/tinymce-profile.php',
                         width: 325,
                         height: 210,
@@ -75,6 +76,7 @@
                     {
                         editor: ed,
                         jquery: $,
+                        dlmTranslations: dlmTranslations,
                         ajaxurl: ajaxurl
                     }
                 );
@@ -87,7 +89,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe - Your Profile",
+                longname : dlmTranslations.profile,
                 author : "dresslikeme.com",
                 version : "1"
             };
@@ -99,7 +101,7 @@
         init : function(ed, url) {
 
             ed.addButton('dlm_outfits_button', {
-                title : 'DressLikeMe - Recent Outfits',
+                title : dlmTranslations.outfits,
                 cmd : 'dlm_outfits_command',
                 icon : 'icon dashicons-images-alt'
             });
@@ -108,7 +110,7 @@
                 ed.windowManager.open(
 
                     {
-                        title: 'DressLikeMe - Recent Outfits',
+                        title: dlmTranslations.outfits,
                         file:  url + '/../views/tinymce-outfits.php',
                         width: 325,
                         height: 210,
@@ -118,6 +120,7 @@
                     {
                         editor: ed,
                         jquery: $,
+                        dlmTranslations: dlmTranslations,
                         ajaxurl: ajaxurl
                     }
                 );
@@ -130,7 +133,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe - Recent Outfits",
+                longname : dlmTranslations.outfits,
                 author : "dresslikeme.com",
                 version : "1"
             };
@@ -142,7 +145,7 @@
         init : function(ed, url) {
 
             ed.addButton('dlm_wardrobe_button', {
-                title : 'DressLikeMe - Your Wardrobe',
+                title : dlmTranslations.wardrobe,
                 cmd : 'dlm_wardrobe_command',
                 icon : 'icon dashicons-businessman'
             });
@@ -150,7 +153,7 @@
             ed.addCommand('dlm_wardrobe_command', function() {
                 ed.windowManager.open(
                     {
-                        title: 'DressLikeMe - Your Wardrobe',
+                        title: dlmTranslations.wardrobe,
                         file:  url + '/../views/tinymce-wardrobe.php',
                         width: 325,
                         height: 210,
@@ -160,6 +163,7 @@
                     {
                         editor: ed,
                         ajaxurl: ajaxurl,
+                        dlmTranslations: dlmTranslations,
                         jquery: $
                     }
                 );
@@ -173,7 +177,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe - Your Wardrobe",
+                longname : dlmTranslations.wardrobe,
                 author : "dresslikeme.com",
                 version : "1"
             };
@@ -185,7 +189,7 @@
         init : function(ed, url) {
 
             ed.addButton('dlm_product_button', {
-                title : 'DressLikeMe - Single Product',
+                title : dlmTranslations.product,
                 cmd : 'dlm_product_command',
                 icon : 'icon dashicons-cart'
             });
@@ -194,7 +198,7 @@
                 ed.windowManager.open(
 
                     {
-                        title: 'DressLikeMe - Single Product',
+                        title: dlmTranslations.product,
                         file:  url + '/../views/tinymce-product.php',
                         width: 335,
                         height: 800,
@@ -204,6 +208,7 @@
                     {
                         editor: ed,
                         jquery: $,
+                        dlmTranslations: dlmTranslations,
                         ajaxurl: ajaxurl
                     }
                 );
@@ -216,7 +221,7 @@
 
         getInfo : function() {
             return {
-                longname : "DressLikeMe - Single Product",
+                longname : dlmTranslations.product,
                 author : "dresslikeme.com",
                 version : "1"
             };

@@ -21,9 +21,9 @@ class dlm_widgets extends WP_Widget
         }
 
         ?>
-        <p>Please update the settings of your DressLikeMe Plugin.</p>
+        <p><?php _e('Please update the settings of your DressLikeMe Plugin.', DLM_TD) ?></p>
         <p>
-            <a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your Settings</a>
+            <a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary"><?php _e('Your Settings', DLM_TD) ?></a>
         </p>
         <?php
 

@@ -3,9 +3,13 @@ class dlm_wardrobe_widget extends dlm_widgets {
 
     // Main constructor
     public function __construct() {
-        parent::__construct('dlm_wardrobe_widget', 'DLM Wardrobe', [
-            'customize_selective_refresh' => true,
-        ]);
+        parent::__construct('dlm_wardrobe_widget', __('DLM Wardrobe', DLM_TD),
+            [
+                'description' => __( 'Displays your DressLikeMe wardrobe.', DLM_TD )
+            ],
+            [
+                'customize_selective_refresh' => true,
+            ]);
     }
 
     // The widget form (for the backend )
@@ -23,12 +27,12 @@ class dlm_wardrobe_widget extends dlm_widgets {
         ?>
 
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'text_domain' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', DLM_TD ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e( 'Limit:', 'text_domain' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e( 'Limit:', DLM_TD ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="text" value="<?php echo esc_attr( $limit ); ?>" />
         </p>
 

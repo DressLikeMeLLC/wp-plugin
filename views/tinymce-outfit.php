@@ -13,6 +13,7 @@
 
 <script>
     var passed_arguments = top.tinymce.activeEditor.windowManager.getParams(),
+        dlmTranslations = passed_arguments.dlmTranslations,
         ajaxurl = passed_arguments.ajaxurl,
         $ = passed_arguments.jquery,
         jqContext = document.getElementsByTagName("body")[0],
@@ -23,9 +24,9 @@
     }, function(data) {
         var json = $.parseJSON(data);
         if(!json['success']) {
-            $('div.error-dlm', jqContext).append('Please check the settings of your DressLikeMe plugin.');
+            $('div.error-dlm', jqContext).append(dlmTranslations.plchset);
             $('div.error-dlm', jqContext).append('<br>');
-            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">'+ dlmTranslations.yourset +'</a>');
             return;
         }
 
@@ -34,7 +35,7 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if(!json || !json.length) {
-                $('div.error-dlm', jqContext).append('Seems like you haven\'t uploaded any outfits yet.');
+                $('div.error-dlm', jqContext).append(dlmTranslations.nooutfit);
                 return;
             }
 
@@ -57,8 +58,6 @@
             });
         });
     });
-
-
 
     $dlmImages.off('click.chooseProduct', 'a.outfit-box').on('click.chooseProduct', 'a.outfit-box', function(e){
         e.preventDefault();
@@ -151,6 +150,8 @@
     div.error-dlm {
         color: red;
     }
+
+    div.success-dlm {}
 </style>
 </body>
 </html>
