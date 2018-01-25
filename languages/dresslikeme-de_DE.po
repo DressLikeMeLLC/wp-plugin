@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DressLikeMe\n"
-"POT-Creation-Date: 2018-01-24 10:23+0100\n"
-"PO-Revision-Date: 2018-01-24 10:28+0100\n"
+"POT-Creation-Date: 2018-01-25 11:28+0100\n"
+"PO-Revision-Date: 2018-01-25 11:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class.plugin.php:153
+#: class.plugin.php:155
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 "Du hast leider nicht die nötigen Berechtigung um auf diese Seite zuzugreifen."
@@ -79,26 +79,38 @@ msgid "Include your profile page."
 msgstr "Füge deine Profil Seite hinzu"
 
 #: views/admin-head.php:16
+msgid "Include all products from one of your DressLikeMe outfits."
+msgstr "Zeige alle Produkte von einem deiner DressLikeMe Outfits."
+
+#: views/admin-head.php:17
 msgid "Insert profile"
 msgstr "Profil einfügen"
 
-#: views/admin-head.php:17
+#: views/admin-head.php:18
 msgid "Include the last products of your wardrobe."
 msgstr "Füge die letzten Produkte deines Kleiderschranks hinzu."
 
-#: views/admin-head.php:18
+#: views/admin-head.php:19
 msgid "* Select 0 for the whole wardrobe"
 msgstr "* Wähle 0 für den gesamten Kleiderschrank"
 
-#: views/admin-head.php:19
+#: views/admin-head.php:20
 msgid "Please check the input of the search field"
 msgstr "Überprüfe bitte den Suchfeld Eintrag"
 
-#: views/admin-head.php:20
+#: views/admin-head.php:21
 msgid "Search"
 msgstr "Suchen"
 
-#: views/admin-head.php:21
+#: views/admin-head.php:22
+msgid "Vertical"
+msgstr "Vertikal"
+
+#: views/admin-head.php:23
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: views/admin-head.php:24
 msgid "Insert wardrobe"
 msgstr "Kleiderschrank einfügen"
 

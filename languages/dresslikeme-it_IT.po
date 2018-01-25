@@ -1,13 +1,15 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: DressLikeMe\n"
-"POT-Creation-Date: 2018-01-24 10:30+0100\n"
-"PO-Revision-Date: 2018-01-24 12:09+0100\n"
+"POT-Creation-Date: 2018-01-25 11:32+0100\n"
+"PO-Revision-Date: 2018-01-25 11:32+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -16,12 +18,10 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
 "_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Last-Translator: \n"
-"Language: it_IT\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class.plugin.php:153
+#: class.plugin.php:155
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi sufficienti per accedere a questa pagina."
 
@@ -78,26 +78,38 @@ msgid "Include your profile page."
 msgstr "Includi la pagina del tuo profilo."
 
 #: views/admin-head.php:16
+msgid "Include all products from one of your DressLikeMe outfits."
+msgstr "Includi tutti i prodotti di uno dei tuoi abiti DressLikeMe."
+
+#: views/admin-head.php:17
 msgid "Insert profile"
 msgstr "Inserto profilo"
 
-#: views/admin-head.php:17
+#: views/admin-head.php:18
 msgid "Include the last products of your wardrobe."
 msgstr "Includi gli ultimi prodotti del tuo guardaroba."
 
-#: views/admin-head.php:18
+#: views/admin-head.php:19
 msgid "* Select 0 for the whole wardrobe"
 msgstr "* Selezionare 0 per l’ intero guardaroba"
 
-#: views/admin-head.php:19
+#: views/admin-head.php:20
 msgid "Please check the input of the search field"
 msgstr "Controllare l’ inserimento del campo di ricerca"
 
-#: views/admin-head.php:20
+#: views/admin-head.php:21
 msgid "Search"
 msgstr "Ricerca ricerca"
 
-#: views/admin-head.php:21
+#: views/admin-head.php:22
+msgid "Vertical"
+msgstr "Verticale"
+
+#: views/admin-head.php:23
+msgid "Horizontal"
+msgstr "Orizzontale"
+
+#: views/admin-head.php:24
 msgid "Insert wardrobe"
 msgstr "Inserire armadio"
 
@@ -122,8 +134,8 @@ msgid ""
 "Unfortunately, no ID or username was passed. Please check the settings of "
 "your DressLikeMe plugin."
 msgstr ""
-"Purtroppo, purtroppo, nessun ID o nome utente è stato passato. Controlla "
-"le impostazioni del tuo plugin DressLikeMe."
+"Purtroppo, purtroppo, nessun ID o nome utente è stato passato. Controlla le "
+"impostazioni del tuo plugin DressLikeMe."
 
 #: views/settings.php:2
 msgid "DLM Settings"
@@ -239,8 +251,8 @@ msgid ""
 "Get inspired by the worldwide most popular fashion trends and publish your "
 "favourite outfit."
 msgstr ""
-"Prendi ispirazione dalle tendenze della moda più popolari in tutto il "
-"mondo e pubblica il tuo outfit preferito."
+"Prendi ispirazione dalle tendenze della moda più popolari in tutto il mondo "
+"e pubblica il tuo outfit preferito."
 
 #. Author of the plugin/theme
 msgid "DressLikeMe LLC"

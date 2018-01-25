@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: DressLikeMe\n"
-"POT-Creation-Date: 2018-01-24 10:30+0100\n"
+"POT-Creation-Date: 2018-01-25 11:28+0100\n"
 "PO-Revision-Date: 2018-01-23 16:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class.plugin.php:153
+#: class.plugin.php:155
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -78,26 +78,38 @@ msgid "Include your profile page."
 msgstr ""
 
 #: views/admin-head.php:16
-msgid "Insert profile"
+msgid "Include all products from one of your DressLikeMe outfits."
 msgstr ""
 
 #: views/admin-head.php:17
-msgid "Include the last products of your wardrobe."
+msgid "Insert profile"
 msgstr ""
 
 #: views/admin-head.php:18
-msgid "* Select 0 for the whole wardrobe"
+msgid "Include the last products of your wardrobe."
 msgstr ""
 
 #: views/admin-head.php:19
-msgid "Please check the input of the search field"
+msgid "* Select 0 for the whole wardrobe"
 msgstr ""
 
 #: views/admin-head.php:20
-msgid "Search"
+msgid "Please check the input of the search field"
 msgstr ""
 
 #: views/admin-head.php:21
+msgid "Search"
+msgstr ""
+
+#: views/admin-head.php:22
+msgid "Vertical"
+msgstr ""
+
+#: views/admin-head.php:23
+msgid "Horizontal"
+msgstr ""
+
+#: views/admin-head.php:24
 msgid "Insert wardrobe"
 msgstr ""
 
