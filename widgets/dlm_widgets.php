@@ -5,7 +5,7 @@ class dlm_widgets extends WP_Widget
     {
         $success = true;
 
-        if (!$response = wp_remote_get('https://dresslikeme.com/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check')) {
+        if (!$response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check')) {
             $success = false;
         } elseif (!is_array( $response ) || empty($response['body'])) {
             $success = false;

@@ -12,6 +12,7 @@ Domain Path: /languages
 define('DLM_CALCULATOR_PATH', plugin_dir_path(__FILE__) );
 define('DLM_CALCULATOR_URL', trailingslashit( plugin_dir_url( __FILE__ ) ));
 define('DLM_TD', 'dresslikeme');
+define('DLM_URL', 'https://dresslikeme.com');
 
 require_once(DLM_CALCULATOR_PATH.'widgets/dlm_widgets.php');
 require_once(DLM_CALCULATOR_PATH.'widgets/dlm_wardrobe_widget.php');

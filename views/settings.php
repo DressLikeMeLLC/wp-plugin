@@ -20,7 +20,7 @@
         <?php _e('Click on the following button to be redirected to your DressLikeMe profile.
         You will receive your access data there, which you can copy and enter below.', DLM_TD) ?>
     </p>
-    <a href="https://dresslikeme.com/member/profile/credentials" target="_blank" class="button-primary"><?php _e('Open access settings', DLM_TD) ?></a>
+    <a href="<?php echo DLM_URL ?>/member/profile/credentials" target="_blank" class="button-primary"><?php _e('Open access settings', DLM_TD) ?></a>
 
     <br /><br />
 

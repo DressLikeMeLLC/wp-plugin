@@ -9,6 +9,8 @@
 </head>
 <body>
 <div class="error-dlm"></div>
+<div class="success-dlm"></div>
+<div class="outfit-div"></div>
 <div class="images-dlm"></div>
 
 <script>
@@ -28,6 +30,12 @@
             $('div.error-dlm', jqContext).append('<br>');
             $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">'+ dlmTranslations.yourset +'</a>');
             return;
+        } else {
+            $('div.success-dlm', jqContext).append(dlmTranslations.incproout);
+            $('div.outfit-div', jqContext).append('<br><select name="style" class="style-select"><option value="horizontal">'+ dlmTranslations.horizontal +'</option><option value="vertical">'+ dlmTranslations.vertical +'</option></select><br>');
+            $('div.outfit-div', jqContext).append('');
+            $('div.outfit-div', jqContext).append('');
+            $('div.outfit-div', jqContext).append('');
         }
 
         $.post(ajaxurl, {
@@ -63,9 +71,10 @@
         e.preventDefault();
 
         var $a = $(this),
+            select_val = $("select[name='style']", jqContext).val(),
             sid = $a.data('sid');
 
-        passed_arguments.editor.selection.setContent('[outfit id="' + sid + '"]');
+        passed_arguments.editor.selection.setContent('[outfit id="' + sid + '" style="' + select_val + '"]');
         passed_arguments.editor.windowManager.close();
     });
 </script>
@@ -84,6 +93,15 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+    }
+
+    select {
+        width: 100%;
+        height: 30px;
+    }
+
+    option {
+
     }
 
     .images-dlm {

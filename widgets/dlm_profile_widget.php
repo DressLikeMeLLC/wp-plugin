@@ -53,14 +53,14 @@ class dlm_profile_widget extends dlm_widgets {
 
             <?php if($title): ?>
                 <?= $before_title; ?>
-                <a href="https://dresslikeme.com/<?= get_option('dlm-name'); ?>" target="_blank">
+                <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
                     <?= $title; ?>
                 </a>
                 <?= $after_title; ?>
 
                 <?= do_shortcode('[profile]'); ?>
             <?php else: ?>
-                <a href="https://dresslikeme.com/<?= get_option('dlm-name'); ?>" target="_blank">
+                <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
                     <?= do_shortcode('[profile]'); ?>
                 </a>
             <?php endif; ?>

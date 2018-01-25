@@ -63,21 +63,21 @@ class dlm_outfit_widget extends dlm_widgets {
             <?php if($sid): ?>
                 <?php if($title): ?>
                     <?= $before_title; ?>
-                    <a href="https://dresslikeme.com/<?= get_option('dlm-name'); ?>/e/<?= $sid ?>" target="_blank">
+                    <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>/e/<?= $sid ?>" target="_blank">
                         <?= $title; ?>
                     </a>
                     <?= $after_title; ?>
 
                     <?= do_shortcode('[outfit id='.$sid.']'); ?>
                 <?php else: ?>
-                    <a href="https://dresslikeme.com/<?= get_option('dlm-name'); ?>" target="_blank">
+                    <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
                         <?= do_shortcode('[outfit id='.$sid.']'); ?>
                     </a>
                 <?php endif; ?>
             <?php else: ?>
                 <?php if($title): ?>
                     <?= $before_title; ?>
-                    <a href="https://dresslikeme.com/<?= get_option('dlm-name'); ?>" target="_blank">
+                    <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
                         <?= $title; ?>
                     </a>
                     <?= $after_title; ?>
