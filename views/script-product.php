@@ -1,4 +1,4 @@
-<?php if($id || $name): ?>
+<?php if(isset($id) && isset($name)): ?>
     <script class="widget-<?php echo md5($id); ?>" src="<?php echo DLM_URL ?>/p/<?php echo $id?>/<?php echo $name?>/widget.js"></script>
 <?php else: ?>
     <pre>

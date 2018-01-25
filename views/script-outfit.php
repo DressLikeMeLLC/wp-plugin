@@ -1,4 +1,4 @@
-<?php if($sid && $style): ?>
+<?php if(isset($sid) && isset($style)): ?>
     <script class="widget-<?php echo $sid; ?>" src="<?php echo DLM_URL ?>/e/<?php echo $sid ?>/widget.js?style=<?php echo $style ?>" async></script>
 <?php else: ?>
     <pre>

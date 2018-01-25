@@ -22,6 +22,7 @@ class dlm_outfit_widget extends dlm_widgets {
         $defaults = [
             'title' => '',
             'sid' => '',
+            'style' => 'horizontal',
         ];
 
         extract( wp_parse_args( ( array ) $instance, $defaults ) );
@@ -37,6 +38,14 @@ class dlm_outfit_widget extends dlm_widgets {
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'sid' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'sid' ) ); ?>" type="text" value="<?php echo esc_attr( $sid ); ?>" />
         </p>
 
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>"><?php _e( 'Style:', DLM_TD ); ?></label>
+            <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'style' ) ); ?>">
+                <option value="horizontal" <?php selected( $instance['style'], 'horizontal'); ?>><?php _e('Horizontal', DLM_TD) ?></option>
+                <option value="vertical" <?php selected( $instance['style'], 'vertical'); ?>><?php _e('Vertical', DLM_TD) ?></option>
+            </select>
+        </p>
+
         <?php
     }
 
@@ -45,6 +54,7 @@ class dlm_outfit_widget extends dlm_widgets {
         $instance = $old_instance;
         $instance['title']    = isset( $new_instance['title'] ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
         $instance['sid']    = isset( $new_instance['sid'] ) ? wp_strip_all_tags( $new_instance['sid'] ) : '';
+        $instance['style']    = isset( $new_instance['style'] ) ? wp_strip_all_tags( $new_instance['style'] ) : '';
         return $instance;
     }
 
@@ -54,6 +64,7 @@ class dlm_outfit_widget extends dlm_widgets {
 
         $title = isset( $instance['title'] ) ? $instance['title'] : '';
         $sid = isset( $instance['sid'] ) ? $instance['sid'] : '';
+        $style = isset( $instance['style'] ) ? $instance['style'] : '';
         ?>
 
         <?= $before_widget; ?>
@@ -68,10 +79,10 @@ class dlm_outfit_widget extends dlm_widgets {
                     </a>
                     <?= $after_title; ?>
 
-                    <?= do_shortcode('[outfit id='.$sid.']'); ?>
+                    <?= do_shortcode('[outfit id='.$sid.' style='.$style.']'); ?>
                 <?php else: ?>
                     <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
-                        <?= do_shortcode('[outfit id='.$sid.']'); ?>
+                        <?= do_shortcode('[outfit id='.$sid.' style='.$style.']'); ?>
                     </a>
                 <?php endif; ?>
             <?php else: ?>

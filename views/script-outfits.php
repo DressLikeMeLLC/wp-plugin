@@ -1,4 +1,4 @@
-<?php if($name): ?>
+<?php if(isset($name)): ?>
     <script class="profileentrieswidget-<?php echo $name?>" src="<?php echo DLM_URL ?>/<?php echo $name?>/widget/entries.js?limit=<?php echo $limit ?>"></script>
 <?php else: ?>
     <pre>
