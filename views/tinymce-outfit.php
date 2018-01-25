@@ -33,9 +33,6 @@
         } else {
             $('div.success-dlm', jqContext).append(dlmTranslations.incproout);
             $('div.outfit-div', jqContext).append('<br><select name="style" class="style-select"><option value="horizontal">'+ dlmTranslations.horizontal +'</option><option value="vertical">'+ dlmTranslations.vertical +'</option></select><br>');
-            $('div.outfit-div', jqContext).append('');
-            $('div.outfit-div', jqContext).append('');
-            $('div.outfit-div', jqContext).append('');
         }
 
         $.post(ajaxurl, {
