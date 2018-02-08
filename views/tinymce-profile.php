@@ -9,18 +9,15 @@
 </head>
 <body>
     <div class="error-dlm"></div>
-    <form class="outfits-form">
-        <p>
-            Include your profile page.
-        </p>
-        <input type="submit" value="Insert Profile">
-        <br>
+    <div class="success-dlm"></div>
+    <form class="profile-form">
     </form>
 
     <script type="text/javascript">
         var passed_arguments = top.tinymce.activeEditor.windowManager.getParams();
 
         var $ = passed_arguments.jquery,
+            dlmTranslations = passed_arguments.dlmTranslations,
             ajaxurl = passed_arguments.ajaxurl;
 
         var jqContext = document.getElementsByTagName("body")[0];
@@ -30,10 +27,13 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if(!json['success']) {
-                $('form.outfits-form', jqContext).html('');
-                $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
+                $('form.profile-form', jqContext).html('');
+                $('div.error-dlm', jqContext).append(dlmTranslations.plchset);
                 $('div.error-dlm', jqContext).append('<br>');
-                $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+                $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">'+ dlmTranslations.yourset +'</a>');
+            } else {
+                $('div.success-dlm', jqContext).append(dlmTranslations.incpro);
+                $('form.profile-form', jqContext).append('<br><input type="submit" value="'+ dlmTranslations.inspro +'">');
             }
         });
 

@@ -3,8 +3,12 @@ class dlm_profile_widget extends dlm_widgets {
 
     // Main constructor
     public function __construct() {
-        parent::__construct('dlm_profile_widget', 'DLM Profile', [
-            'customize_selective_refresh' => true,
+        parent::__construct('dlm_profile_widget', __('DLM Profile', DLM_TD),
+            [
+                'description' => __( 'Displays your DressLikeMe profile.', DLM_TD )
+            ],
+            [
+                'customize_selective_refresh' => true,
         ]);
     }
 
@@ -22,7 +26,7 @@ class dlm_profile_widget extends dlm_widgets {
         ?>
 
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'text_domain' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', DLM_TD ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
 
@@ -49,14 +53,14 @@ class dlm_profile_widget extends dlm_widgets {
 
             <?php if($title): ?>
                 <?= $before_title; ?>
-                <a href="https://dresslikeme.com/<?= get_option('dlm-name'); ?>" target="_blank">
+                <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
                     <?= $title; ?>
                 </a>
                 <?= $after_title; ?>
 
                 <?= do_shortcode('[profile]'); ?>
             <?php else: ?>
-                <a href="https://dresslikeme.com/<?= get_option('dlm-name'); ?>" target="_blank">
+                <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
                     <?= do_shortcode('[profile]'); ?>
                 </a>
             <?php endif; ?>

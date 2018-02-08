@@ -9,25 +9,17 @@
 </head>
 <body>
     <div class="error-dlm"></div>
+    <div class="success-dlm"></div>
     <form class="wardrobe-form">
-        <p>
-            Include the last products of your wardrobe
-        </p>
-        <label for="limit">Limit *</label><br>
-        <input type="number" min="0" step="1" value="24" name="limit" id="limit" required><br><br>
-        <input type="submit" value="Insert Wardrobe">
-        <br>
-        <p>
-            * Select 0 for the whole wardrobe
-        </p>
     </form>
+    <div class="success-dlm-2"></div>
 
     <script type="text/javascript">
         var passed_arguments = top.tinymce.activeEditor.windowManager.getParams();
 
         var $ = passed_arguments.jquery,
+            dlmTranslations = passed_arguments.dlmTranslations,
             ajaxurl = passed_arguments.ajaxurl;
-        $("input[name='limit']").focus();
 
         var jqContext = document.getElementsByTagName("body")[0];
 
@@ -40,6 +32,12 @@
                 $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
                 $('div.error-dlm', jqContext).append('<br>');
                 $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+            } else {
+                $('div.success-dlm', jqContext).append(dlmTranslations.incwa);
+                $('form.wardrobe-form', jqContext).append('<br><label for="limit">'+ dlmTranslations.limit +'</label><br>');
+                $('form.wardrobe-form', jqContext).append('<input type="number" min="0" step="1" value="24" name="limit" id="limit" required><br>');
+                $('form.wardrobe-form', jqContext).append('<input type="submit" value="'+ dlmTranslations.inswa +'"><br>');
+                $('div.success-dlm-2', jqContext).append(dlmTranslations.oforallwa);
             }
         });
 

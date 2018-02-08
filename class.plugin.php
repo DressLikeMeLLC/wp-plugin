@@ -4,10 +4,12 @@ class DressLikeMe extends TlView {
     public function __construct() {
         $this->setViewPath(DLM_CALCULATOR_PATH . 'views/');
         $this->init();
+        $this->initTranslations();
     }
 
     private function init()
     {
+        add_action('init', array($this, 'initTranslations'));
         add_action('after_setup_theme', array($this, 'afterSetupTheme'));
     }
 
@@ -20,7 +22,9 @@ class DressLikeMe extends TlView {
         add_action('wp_ajax_dlm_json_action', array($this, 'getOutfitsFromApi'));
         add_action('wp_ajax_dlm_product_json_action', array($this, 'getProductsFromApi'));
 
-        add_action( 'widgets_init', array($this, 'initWidgets'));
+        add_action('widgets_init', array($this, 'initWidgets'));
+
+        add_action('admin_head', array($this, 'adminHead'));
 
         add_filter('mce_external_plugins', array($this, 'enqueuePluginScripts'));
         add_filter('mce_buttons', array($this, 'registerButtonsEditor'));
@@ -33,6 +37,10 @@ class DressLikeMe extends TlView {
         add_shortcode('outfits', array($this, 'outputOutfits'));
     }
 
+    public function initTranslations() {
+        load_plugin_textdomain( DLM_TD, false, 'dresslikeme/languages' );
+    }
+
     public function initWidgets() {
         register_widget( 'dlm_wardrobe_widget' );
         register_widget( 'dlm_profile_widget' );
@@ -40,9 +48,14 @@ class DressLikeMe extends TlView {
         register_widget( 'dlm_outfits_widget' );
     }
 
+    public function adminHead() {
+        $this->view('admin-head');
+    }
+
     public function outputOutfit($attr) {
         return $this->view('script-outfit', array(
-            'sid' => trim($attr['id'])
+            'sid' => trim($attr['id']),
+            'style' => trim($attr['style'])
         ), true);
     }
 
@@ -102,7 +115,7 @@ class DressLikeMe extends TlView {
 
     public function checkApiSettings()
     {
-        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check');
+        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check');
         if (!is_array( $response ) || empty($response['body'])) {
             exit(null);
         }
@@ -112,7 +125,7 @@ class DressLikeMe extends TlView {
 
     public function getOutfitsFromApi()
     {
-        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/entries');
+        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/entries');
         if (!is_array( $response ) || empty($response['body'])) {
             exit(json_encode([]));
         }
@@ -125,7 +138,7 @@ class DressLikeMe extends TlView {
         if(!$search = sanitize_text_field($_POST['search'])) {
             exit(json_encode([]));
         }
-        $response = wp_remote_get('https://dresslikeme.com/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/products/' .$this->getWpCountry(). '?q=' .urlencode($search));
+        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/products/' .$this->getWpCountry(). '?q=' .urlencode($search));
         if (!is_array( $response ) || empty($response['body'])) {
             exit(json_encode([]));
         }
@@ -139,7 +152,7 @@ class DressLikeMe extends TlView {
 
     public function getSettingsPage() {
         if (!current_user_can('manage_options')) {
-            wp_die( __('You do not have sufficient permissions to access this page.') );
+            wp_die( __('You do not have sufficient permissions to access this page.', DLM_TD) );
         }
 
         $this->view('settings');
@@ -154,7 +167,7 @@ class DressLikeMe extends TlView {
         $name = sanitize_text_field($_POST['dlm-name']);
         $key = sanitize_text_field($_POST['dlm-api-key']);
 
-        if(!$response = wp_remote_get('https://dresslikeme.com/api/v1/'. $name .'/'. $key .'/check')) {
+        if(!$response = wp_remote_get(DLM_URL .'/api/v1/'. $name .'/'. $key .'/check')) {
 	        header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
 	        exit();
         }

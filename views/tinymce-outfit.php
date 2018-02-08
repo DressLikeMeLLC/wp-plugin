@@ -9,10 +9,13 @@
 </head>
 <body>
 <div class="error-dlm"></div>
+<div class="success-dlm"></div>
+<div class="outfit-div"></div>
 <div class="images-dlm"></div>
 
 <script>
     var passed_arguments = top.tinymce.activeEditor.windowManager.getParams(),
+        dlmTranslations = passed_arguments.dlmTranslations,
         ajaxurl = passed_arguments.ajaxurl,
         $ = passed_arguments.jquery,
         jqContext = document.getElementsByTagName("body")[0],
@@ -23,10 +26,13 @@
     }, function(data) {
         var json = $.parseJSON(data);
         if(!json['success']) {
-            $('div.error-dlm', jqContext).append('Please check the settings of your DressLikeMe plugin.');
+            $('div.error-dlm', jqContext).append(dlmTranslations.plchset);
             $('div.error-dlm', jqContext).append('<br>');
-            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">'+ dlmTranslations.yourset +'</a>');
             return;
+        } else {
+            $('div.success-dlm', jqContext).append(dlmTranslations.incproout);
+            $('div.outfit-div', jqContext).append('<br><select name="style" class="style-select"><option value="horizontal">'+ dlmTranslations.horizontal +'</option><option value="vertical">'+ dlmTranslations.vertical +'</option></select><br>');
         }
 
         $.post(ajaxurl, {
@@ -34,7 +40,7 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if(!json || !json.length) {
-                $('div.error-dlm', jqContext).append('Seems like you haven\'t uploaded any outfits yet.');
+                $('div.error-dlm', jqContext).append(dlmTranslations.nooutfit);
                 return;
             }
 
@@ -58,15 +64,14 @@
         });
     });
 
-
-
     $dlmImages.off('click.chooseProduct', 'a.outfit-box').on('click.chooseProduct', 'a.outfit-box', function(e){
         e.preventDefault();
 
         var $a = $(this),
+            select_val = $("select[name='style']", jqContext).val(),
             sid = $a.data('sid');
 
-        passed_arguments.editor.selection.setContent('[outfit id="' + sid + '"]');
+        passed_arguments.editor.selection.setContent('[outfit id="' + sid + '" style="' + select_val + '"]');
         passed_arguments.editor.windowManager.close();
     });
 </script>
@@ -85,6 +90,15 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+    }
+
+    select {
+        width: 100%;
+        height: 30px;
+    }
+
+    option {
+
     }
 
     .images-dlm {
@@ -151,6 +165,8 @@
     div.error-dlm {
         color: red;
     }
+
+    div.success-dlm {}
 </style>
 </body>
 </html>

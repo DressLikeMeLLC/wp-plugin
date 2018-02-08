@@ -11,7 +11,6 @@
 <div class="error-dlm"></div>
 <form class="product-search">
     <input type="text" name="search" required id="search" /><br><br>
-    <input type="submit" value="Search" />
 </form> <br>
 <div class="images-dlm"></div>
 <br>
@@ -19,6 +18,7 @@
 <script>
     var passed_arguments = top.tinymce.activeEditor.windowManager.getParams(),
         ajaxurl = passed_arguments.ajaxurl,
+        dlmTranslations = passed_arguments.dlmTranslations,
         $ = passed_arguments.jquery,
         jqContext = document.getElementsByTagName("body")[0],
         $dlmImages = $('div.images-dlm', jqContext);
@@ -29,9 +29,11 @@
         var json = $.parseJSON(data);
         if(!json['success']) {
             $('form', jqContext).html('');
-            $('div.error-dlm', jqContext).append('Please update the settings of your DressLikeMe plugin.');
+            $('div.error-dlm', jqContext).append(dlmTranslations.plchset);
             $('div.error-dlm', jqContext).append('<br>');
-            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
+            $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">'+ dlmTranslations.yourset +'</a>');
+        } else {
+            $('form.product-search', jqContext).append('<input type="submit" value="'+ dlmTranslations.searchbt +'"/>');
         }
     });
 
@@ -43,7 +45,7 @@
         }, function(data) {
             var json = $.parseJSON(data);
             if (!json || !json.length) {
-                $('div.error-dlm', jqContext).append('Please check the input of the search field');
+                $('div.error-dlm', jqContext).append(dlmTranslations.plchsearch);
                 return;
             }
 
