@@ -49,15 +49,9 @@
             </tbody>
         </table>
 
-        <p class="submit">
-            <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes', DLM_TD) ?>"/>
-        </p>
-    </form>
-
     <?php if(!empty(get_option('dlm-name'))):
         if(!empty(get_option('dlm-api-key'))): ?>
             <h3><?php _e('3.) Customize the look', DLM_TD) ?></h3>
-            <form name="dlm-custom-settings-form" method="post" action="">
                 <input type="hidden" name="dlm_submit_custom_hidden" value="Y">
 
                 <table class="form-table">
@@ -86,13 +80,10 @@
                     </tr>
                     </tbody>
                 </table>
-
-                <p class="submit">
-                    <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes', DLM_TD) ?>"/>
-                </p>
             <?php endif;
         endif; ?>
+        <p class="submit">
+            <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes', DLM_TD) ?>"/>
+        </p>
     </form>
-
-
 </div>

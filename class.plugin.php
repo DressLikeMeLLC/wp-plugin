@@ -15,7 +15,6 @@ class DressLikeMe extends TlView {
 
     public function afterSetupTheme() {
         $this->saveSettingsPage();
-        $this->saveCustomSettingsPage();
         add_action('admin_menu', array($this, 'initSettingsPage'));
 
         add_action('wp_enqueue_scripts', array($this, 'enqueueStatic'));
@@ -177,6 +176,12 @@ class DressLikeMe extends TlView {
 
         $name = sanitize_text_field($_POST['dlm-name']);
         $key = sanitize_text_field($_POST['dlm-api-key']);
+        $color = sanitize_text_field($_POST['dlm-color']);
+        if($_POST['dlm-hide-prices']) {
+            $hidePrices = 1;
+        } else {
+            $hidePrices = 0;
+        }
 
         if(!$response = wp_remote_get(DLM_URL .'/api/v1/'. $name .'/'. $key .'/check')) {
 	        header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
@@ -191,37 +196,8 @@ class DressLikeMe extends TlView {
 
         update_option('dlm-name', $name);
         update_option('dlm-api-key', $key);
-
-        header('Location: '.admin_url('admin.php?page=dlm&saved=true'));
-        exit();
-    }
-
-    private function saveCustomSettingsPage()
-    {
-        if (!isset($_POST['dlm_submit_custom_hidden']) || sanitize_text_field($_POST['dlm_submit_custom_hidden']) !== 'Y') {
-            return;
-        }
-
-        $color = sanitize_text_field($_POST['dlm-color']);
-        if($_POST['dlm-hide-prices']) {
-            $hidePrices = 1;
-        } else {
-            $hidePrices = 0;
-        }
-
-        if(!$response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check')) {
-            header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
-            exit();
-        }
-
-        $arr = json_decode($response['body'], true);
-        if (empty($arr) || !$arr['success']) {
-            header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
-            exit();
-        }
-
         update_option('dlm-color', $color);
-        update_option('dlm-hide-prices', $hidePrices);
+        update_option('dlm-hideprices', $hidePrices);
 
         header('Location: '.admin_url('admin.php?page=dlm&saved=true'));
         exit();
