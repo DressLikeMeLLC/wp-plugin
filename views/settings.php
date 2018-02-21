@@ -3,9 +3,9 @@
 
     <?php if(!empty($_GET['saved'])):
         if($_GET['saved'] == 'true'): ?>
-        <div class="notice notice-success is-dismissible">
-            <p><?php _e('Thank you very much! Your changes have been saved successfully!', DLM_TD) ?></p>
-        </div>
+            <div class="notice notice-success is-dismissible">
+                <p><?php _e('Thank you very much! Your changes have been saved successfully!', DLM_TD) ?></p>
+            </div>
         <?php endif;
 
         if($_GET['saved'] == 'false'): ?>
@@ -49,9 +49,9 @@
             </tbody>
         </table>
 
-    <?php if(!empty(get_option('dlm-name'))):
-        if(!empty(get_option('dlm-api-key'))): ?>
-            <h3><?php _e('3.) Customize the look', DLM_TD) ?></h3>
+        <?php if(!empty(get_option('dlm-name'))):
+            if(!empty(get_option('dlm-api-key'))): ?>
+                <h3><?php _e('3.) Customize the look', DLM_TD) ?></h3>
                 <input type="hidden" name="dlm_submit_custom_hidden" value="Y">
 
                 <table class="form-table">
@@ -73,7 +73,7 @@
                             <label for="dlm-hide-prices"><?php _e('Hide Prices:', DLM_TD) ?></label>
                         </th>
                         <td>
-                            <input name="dlm-hide-prices" type="checkbox" id="dlm-hide-prices" value="dlm-hide-prices" class="regular-checkbox" <?php if(get_option('dlm-hide-prices') == 1) {
+                            <input name="dlm-hide-prices" type="checkbox" id="dlm-hide-prices" value="dlm-hide-prices" class="regular-checkbox" <?php if(get_option('dlm-hideprices') == 1) {
                                 echo 'checked';
                             } ?>>
                         </td>

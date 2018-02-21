@@ -57,7 +57,7 @@ class DressLikeMe extends TlView {
             'sid' => trim($attr['id']),
             'style' => trim($attr['style']),
             'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hide-prices')
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
@@ -66,7 +66,7 @@ class DressLikeMe extends TlView {
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
             'name' => get_option('dlm-name'),
             'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hide-prices')
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
@@ -75,7 +75,7 @@ class DressLikeMe extends TlView {
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
             'name' => get_option('dlm-name'),
             'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hide-prices')
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
@@ -83,7 +83,7 @@ class DressLikeMe extends TlView {
         return $this->view('script-profile', array(
             'name' => get_option('dlm-name'),
             'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hide-prices')
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
@@ -92,7 +92,7 @@ class DressLikeMe extends TlView {
             'id' => trim($attr['id']),
             'name' => get_option('dlm-name'),
             'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hide-prices')
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
@@ -184,8 +184,8 @@ class DressLikeMe extends TlView {
         }
 
         if(!$response = wp_remote_get(DLM_URL .'/api/v1/'. $name .'/'. $key .'/check')) {
-	        header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
-	        exit();
+            header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
+            exit();
         }
 
         $arr = json_decode($response['body'], true);
