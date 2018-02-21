@@ -55,9 +55,9 @@ class DressLikeMe extends TlView {
     public function outputOutfit($attr) {
         return $this->view('script-outfit', array(
             'sid' => trim($attr['id']),
-            'style' => trim($attr['style']),
-            'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hideprices')
+            'style' => $this->getStyle($attr['style']),
+            'color' => $this->getColor(),
+            'hidePrices' => intval(get_option('dlm-hideprices'))
         ), true);
     }
 
@@ -65,25 +65,26 @@ class DressLikeMe extends TlView {
         return $this->view('script-outfits', array(
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
             'name' => get_option('dlm-name'),
-            'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hideprices')
+            'color' => $this->getColor(),
+            'hidePrices' => intval(get_option('dlm-hideprices'))
         ), true);
     }
 
     public function outputWardrobe($attr) {
         return $this->view('script-wardrobe', array(
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
+            'style' => $this->getStyle($attr['style']),
             'name' => get_option('dlm-name'),
-            'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hideprices')
+            'color' => $this->getColor(),
+            'hidePrices' => intval(get_option('dlm-hideprices'))
         ), true);
     }
 
     public function outputProfile() {
         return $this->view('script-profile', array(
             'name' => get_option('dlm-name'),
-            'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hideprices')
+            'color' => $this->getColor(),
+            'hidePrices' => intval(get_option('dlm-hideprices'))
         ), true);
     }
 
@@ -91,9 +92,28 @@ class DressLikeMe extends TlView {
         return $this->view('script-product', array(
             'id' => trim($attr['id']),
             'name' => get_option('dlm-name'),
-            'color' => get_option('dlm-color'),
-            'hidePrices' => get_option('dlm-hideprices')
+            'color' => $this->getColor(),
+            'hidePrices' => intval(get_option('dlm-hideprices'))
         ), true);
+    }
+
+    private function getColor()
+    {
+	    if(!$color = get_option('dlm-color', false)) {
+	    	return '';
+	    }
+
+	    return str_replace('#', '', trim($color));
+    }
+
+    private function getStyle($style)
+    {
+	    if(!$style) {
+	    	return 0;
+	    } elseif(trim($style) === 'horizontal') {
+	    	return 1;
+	    }
+	    return 0;
     }
 
     public function enqueuePluginScripts($plugin_array) {
