@@ -9,11 +9,11 @@ class dlm_widgets extends WP_Widget
             $success = false;
         } elseif (!is_array( $response ) || empty($response['body'])) {
             $success = false;
-        }
-
-        $json = json_decode($response['body'], true);
-        if(!$json['success']) {
-            $success = false;
+        } else {
+	        $json = json_decode( $response['body'], true );
+	        if ( ! $json['success'] ) {
+		        $success = false;
+	        }
         }
 
         if($success) {
