@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DressLikeMe\n"
-"POT-Creation-Date: 2018-01-25 11:28+0100\n"
-"PO-Revision-Date: 2018-01-25 11:29+0100\n"
+"POT-Creation-Date: 2018-01-29 13:44+0100\n"
+"PO-Revision-Date: 2018-01-29 13:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class.plugin.php:155
+#: class.plugin.php:166
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 "Du hast leider nicht die nötigen Berechtigung um auf diese Seite zuzugreifen."
@@ -102,11 +102,11 @@ msgstr "Überprüfe bitte den Suchfeld Eintrag"
 msgid "Search"
 msgstr "Suchen"
 
-#: views/admin-head.php:22
+#: views/admin-head.php:22 widgets/dlm_outfit_widget.php:45
 msgid "Vertical"
 msgstr "Vertikal"
 
-#: views/admin-head.php:23
+#: views/admin-head.php:23 widgets/dlm_outfit_widget.php:44
 msgid "Horizontal"
 msgstr "Horizontal"
 
@@ -123,6 +123,7 @@ msgstr ""
 "DressLikeMe plugins."
 
 #: views/script-outfits.php:5 views/script-profile.php:5
+#: views/script-wardrobe.php:5
 msgid ""
 "Unfortunately, no username was passed. Please check the settings of your "
 "DressLikeMe plugin."
@@ -180,9 +181,21 @@ msgstr "Benutzername:"
 msgid "Access Key:"
 msgstr "Zugangsschlüssel:"
 
-#: views/settings.php:53
+#: views/settings.php:53 views/settings.php:91
 msgid "Save Changes"
 msgstr "Änderungen speichern"
+
+#: views/settings.php:59
+msgid "3.) Customize the look"
+msgstr "3.) Personalisiere dein Plugin"
+
+#: views/settings.php:67
+msgid "Color:"
+msgstr "Farbe:"
+
+#: views/settings.php:79
+msgid "Hide Prices:"
+msgstr "Preise verstecken:"
 
 #: widgets/dlm_outfit_widget.php:6
 msgid "DLM Outfit Products"
@@ -192,14 +205,18 @@ msgstr "DLM Outfit Produkte"
 msgid "All products from one of your DressLikeMe outfits."
 msgstr "Zeigt alle Produkte von einem deiner DressLikeMe Outfits."
 
-#: widgets/dlm_outfit_widget.php:31 widgets/dlm_outfits_widget.php:31
+#: widgets/dlm_outfit_widget.php:32 widgets/dlm_outfits_widget.php:31
 #: widgets/dlm_profile_widget.php:29 widgets/dlm_wardrobe_widget.php:30
 msgid "Title:"
 msgstr "Titel:"
 
-#: widgets/dlm_outfit_widget.php:36
+#: widgets/dlm_outfit_widget.php:37
 msgid "Outfit ID:"
 msgstr "Outfit ID:"
+
+#: widgets/dlm_outfit_widget.php:42
+msgid "Style:"
+msgstr "Style:"
 
 #: widgets/dlm_outfits_widget.php:6
 msgid "DLM Recent Outfits"

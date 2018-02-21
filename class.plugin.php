@@ -55,34 +55,44 @@ class DressLikeMe extends TlView {
     public function outputOutfit($attr) {
         return $this->view('script-outfit', array(
             'sid' => trim($attr['id']),
-            'style' => trim($attr['style'])
+            'style' => trim($attr['style']),
+            'color' => get_option('dlm-color'),
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
     public function outputOutfits($attr) {
         return $this->view('script-outfits', array(
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
-            'name' => get_option('dlm-name')
+            'name' => get_option('dlm-name'),
+            'color' => get_option('dlm-color'),
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
     public function outputWardrobe($attr) {
         return $this->view('script-wardrobe', array(
             'limit' => (!empty($attr['limit'])?intval($attr['limit']):0),
-            'name' => get_option('dlm-name')
+            'name' => get_option('dlm-name'),
+            'color' => get_option('dlm-color'),
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
     public function outputProfile() {
         return $this->view('script-profile', array(
-            'name' => get_option('dlm-name')
+            'name' => get_option('dlm-name'),
+            'color' => get_option('dlm-color'),
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
     public function outputProduct($attr) {
         return $this->view('script-product', array(
             'id' => trim($attr['id']),
-            'name' => get_option('dlm-name')
+            'name' => get_option('dlm-name'),
+            'color' => get_option('dlm-color'),
+            'hidePrices' => get_option('dlm-hideprices')
         ), true);
     }
 
@@ -172,12 +182,18 @@ class DressLikeMe extends TlView {
 
         $name = sanitize_text_field($_POST['dlm-name']);
         $key = sanitize_text_field($_POST['dlm-api-key']);
+        $color = sanitize_text_field($_POST['dlm-color']);
+        if($_POST['dlm-hide-prices']) {
+            $hidePrices = 1;
+        } else {
+            $hidePrices = 0;
+        }
 
         if(!$response = wp_remote_get(DLM_URL .'/api/v1/'. $name .'/'. $key .'/check', [
-        	'sslverify' => false,
+            'sslverify' => false,
         ])) {
-	        header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
-	        exit();
+            header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
+            exit();
         }
 
         $arr = json_decode($response['body'], true);
@@ -188,6 +204,8 @@ class DressLikeMe extends TlView {
 
         update_option('dlm-name', $name);
         update_option('dlm-api-key', $key);
+        update_option('dlm-color', $color);
+        update_option('dlm-hideprices', $hidePrices);
 
         header('Location: '.admin_url('admin.php?page=dlm&saved=true'));
         exit();
