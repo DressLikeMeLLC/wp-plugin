@@ -115,7 +115,9 @@ class DressLikeMe extends TlView {
 
     public function checkApiSettings()
     {
-        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check');
+        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/check', [
+	        'sslverify' => false,
+        ]);
         if (!is_array( $response ) || empty($response['body'])) {
             exit(null);
         }
@@ -125,7 +127,9 @@ class DressLikeMe extends TlView {
 
     public function getOutfitsFromApi()
     {
-        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/entries');
+        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/entries', [
+	        'sslverify' => false,
+        ]);
         if (!is_array( $response ) || empty($response['body'])) {
             exit(json_encode([]));
         }
@@ -138,7 +142,9 @@ class DressLikeMe extends TlView {
         if(!$search = sanitize_text_field($_POST['search'])) {
             exit(json_encode([]));
         }
-        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/products/' .$this->getWpCountry(). '?q=' .urlencode($search));
+        $response = wp_remote_get(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/products/' .$this->getWpCountry(). '?q=' .urlencode($search), [
+	        'sslverify' => false,
+        ]);
         if (!is_array( $response ) || empty($response['body'])) {
             exit(json_encode([]));
         }
@@ -167,7 +173,9 @@ class DressLikeMe extends TlView {
         $name = sanitize_text_field($_POST['dlm-name']);
         $key = sanitize_text_field($_POST['dlm-api-key']);
 
-        if(!$response = wp_remote_get(DLM_URL .'/api/v1/'. $name .'/'. $key .'/check')) {
+        if(!$response = wp_remote_get(DLM_URL .'/api/v1/'. $name .'/'. $key .'/check', [
+        	'sslverify' => false,
+        ])) {
 	        header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
 	        exit();
         }
