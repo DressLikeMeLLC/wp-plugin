@@ -156,7 +156,7 @@
                         title: dlmTranslations.wardrobe,
                         file:  url + '/../views/tinymce-wardrobe.php',
                         width: 325,
-                        height: 210,
+                        height: 290,
                         inline: 1
                     },
 

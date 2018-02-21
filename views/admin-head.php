@@ -20,6 +20,7 @@
         plchsearch: '<?= __('Please check the input of the search field', DLM_TD); ?>',
         searchbt: '<?= __('Search', DLM_TD); ?>',
         vertical: '<?= __('Vertical', DLM_TD); ?>',
+        style: '<?= __('Display Style', DLM_TD) ?>',
         horizontal: '<?= __('Horizontal', DLM_TD); ?>',
         inswa: '<?= __('Insert wardrobe', DLM_TD); ?>'
     }

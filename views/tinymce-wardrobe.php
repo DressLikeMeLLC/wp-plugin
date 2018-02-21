@@ -34,9 +34,11 @@
                 $('div.error-dlm', jqContext).append('<a href="/wp-admin/admin.php?page=dlm" target="_blank" class="button-primary">Your settings</a>');
             } else {
                 $('div.success-dlm', jqContext).append(dlmTranslations.incwa);
-                $('form.wardrobe-form', jqContext).append('<br><label for="limit">'+ dlmTranslations.limit +'</label><br>');
+                $('form.wardrobe-form', jqContext).append('<br><label for="style">'+ dlmTranslations.style +'</label>');
+                $('form.wardrobe-form', jqContext).append('<select name="style" class="style-select"><option value="horizontal">'+ dlmTranslations.horizontal +'</option><option value="vertical">'+ dlmTranslations.vertical +'</option></select><br>');
+                $('form.wardrobe-form', jqContext).append('<label for="limit">'+ dlmTranslations.limit +'</label><br>');
                 $('form.wardrobe-form', jqContext).append('<input type="number" min="0" step="1" value="24" name="limit" id="limit" required><br>');
-                $('form.wardrobe-form', jqContext).append('<input type="submit" value="'+ dlmTranslations.inswa +'"><br>');
+                $('form.wardrobe-form', jqContext).append('<br><input type="submit" value="'+ dlmTranslations.inswa +'"><br>');
                 $('div.success-dlm-2', jqContext).append(dlmTranslations.oforallwa);
             }
         });
@@ -45,11 +47,8 @@
             event.preventDefault();
 
             var input_text = parseInt($("input[name='limit']", jqContext).val(), 10),
-                shortcode = '[wardrobe';
-
-            shortcode += ' limit=' + input_text + '';
-
-            shortcode += ']';
+                select_val = $("select[name='style']", jqContext).val(),
+                shortcode = '[wardrobe limit=' + input_text  + '" style="' + select_val + '"]';
 
             passed_arguments.editor.selection.setContent(shortcode);
             passed_arguments.editor.windowManager.close();
@@ -72,9 +71,20 @@
             box-sizing: border-box;
         }
 
+        select {
+            padding: 3px 8px;
+            font-size: 1.2em;
+            line-height: 100%;
+            height: 1.6em;
+            width: 100%;
+            outline: 0;
+            margin: 0 0 3px;
+            background-color: #fff;
+        }
+
         input[type="number"] {
             padding: 3px 8px;
-            font-size: 1.6em;
+            font-size: 1.2em;
             line-height: 100%;
             height: 1.6em;
             max-width: 100%;
