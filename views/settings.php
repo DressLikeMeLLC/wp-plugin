@@ -3,9 +3,9 @@
 
     <?php if(!empty($_GET['saved'])):
         if($_GET['saved'] == 'true'): ?>
-        <div class="notice notice-success is-dismissible">
-            <p><?php _e('Thank you very much! Your changes have been saved successfully!', DLM_TD) ?></p>
-        </div>
+            <div class="notice notice-success is-dismissible">
+                <p><?php _e('Thank you very much! Your changes have been saved successfully!', DLM_TD) ?></p>
+            </div>
         <?php endif;
 
         if($_GET['saved'] == 'false'): ?>
@@ -49,10 +49,41 @@
             </tbody>
         </table>
 
+        <?php if(!empty(get_option('dlm-name'))):
+            if(!empty(get_option('dlm-api-key'))): ?>
+                <h3><?php _e('3.) Customize the look', DLM_TD) ?></h3>
+                <input type="hidden" name="dlm_submit_custom_hidden" value="Y">
+
+                <table class="form-table">
+                    <tbody>
+                    <tr>
+                        <th scope="row">
+                            <label for="dlm-color"><?php _e('Color:', DLM_TD) ?></label>
+                        </th>
+                        <td>
+                            <input name="dlm-color" required type="color" id="dlm-color" value="<?php if(get_option('dlm-color')) {
+                                echo get_option('dlm-color');
+                            } else {
+                                echo '#FF7765';
+                            }  ?>" class="regular-text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="dlm-hide-prices"><?php _e('Hide Prices:', DLM_TD) ?></label>
+                        </th>
+                        <td>
+                            <input name="dlm-hide-prices" type="checkbox" id="dlm-hide-prices" value="dlm-hide-prices" class="regular-checkbox" <?php if(get_option('dlm-hideprices') == 1) {
+                                echo 'checked';
+                            } ?>>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            <?php endif;
+        endif; ?>
         <p class="submit">
             <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes', DLM_TD) ?>"/>
         </p>
     </form>
-
-
 </div>
