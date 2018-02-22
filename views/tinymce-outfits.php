@@ -47,7 +47,7 @@
             var input_text = parseInt($("input[name='limit']", jqContext).val(), 10),
                 shortcode = '[outfits';
 
-            shortcode += ' limit=' + input_text + '';
+            shortcode += ' limit="' + input_text + '"';
 
             shortcode += ']';
 
