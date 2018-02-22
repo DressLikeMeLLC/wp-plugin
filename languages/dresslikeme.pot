@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: DressLikeMe\n"
-"POT-Creation-Date: 2018-01-29 13:44+0100\n"
+"POT-Creation-Date: 2018-02-22 09:54+0100\n"
 "PO-Revision-Date: 2018-01-23 16:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class.plugin.php:166
+#: class.plugin.php:191
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -105,11 +105,15 @@ msgstr ""
 msgid "Vertical"
 msgstr ""
 
-#: views/admin-head.php:23 widgets/dlm_outfit_widget.php:44
+#: views/admin-head.php:23
+msgid "Display Style"
+msgstr ""
+
+#: views/admin-head.php:24 widgets/dlm_outfit_widget.php:44
 msgid "Horizontal"
 msgstr ""
 
-#: views/admin-head.php:24
+#: views/admin-head.php:25
 msgid "Insert wardrobe"
 msgstr ""
 
@@ -172,20 +176,20 @@ msgstr ""
 msgid "Access Key:"
 msgstr ""
 
-#: views/settings.php:53 views/settings.php:91
-msgid "Save Changes"
-msgstr ""
-
-#: views/settings.php:59
+#: views/settings.php:54
 msgid "3.) Customize the look"
 msgstr ""
 
-#: views/settings.php:67
+#: views/settings.php:61
 msgid "Color:"
 msgstr ""
 
-#: views/settings.php:79
+#: views/settings.php:73
 msgid "Hide Prices:"
+msgstr ""
+
+#: views/settings.php:86
+msgid "Save Changes"
 msgstr ""
 
 #: widgets/dlm_outfit_widget.php:6
