@@ -41,8 +41,13 @@ class dlm_outfit_widget extends dlm_widgets {
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>"><?php _e( 'Style:', DLM_TD ); ?></label>
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'style' ) ); ?>">
-                <option value="horizontal" <?php selected( $instance['style'], 'horizontal'); ?>><?php _e('Horizontal', DLM_TD) ?></option>
-                <option value="vertical" <?php selected( $instance['style'], 'vertical'); ?>><?php _e('Vertical', DLM_TD) ?></option>
+                <?php if($instance['style']): ?>
+                    <option value="horizontal" <?php selected( $instance['style'], 'horizontal'); ?>><?php _e('Horizontal', DLM_TD) ?></option>
+                    <option value="vertical" <?php selected( $instance['style'], 'vertical'); ?>><?php _e('Vertical', DLM_TD) ?></option>
+                <?php else: ?>
+                    <option value="horizontal" selected><?php _e('Horizontal', DLM_TD) ?></option>
+                    <option value="vertical"><?php _e('Vertical', DLM_TD) ?></option>
+                <?php endif; ?>
             </select>
         </p>
 
@@ -79,10 +84,10 @@ class dlm_outfit_widget extends dlm_widgets {
                     </a>
                     <?= $after_title; ?>
 
-                    <?= do_shortcode('[outfit id='.$sid.' style='.$style.']'); ?>
+                    <?= do_shortcode('[outfit id="'.$sid.'" style="'.$style.'"]'); ?>
                 <?php else: ?>
                     <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
-                        <?= do_shortcode('[outfit id='.$sid.' style='.$style.']'); ?>
+                        <?= do_shortcode('[outfit id="'.$sid.'" style="'.$style.'"]'); ?>
                     </a>
                 <?php endif; ?>
             <?php else: ?>

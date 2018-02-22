@@ -67,10 +67,10 @@ class dlm_outfits_widget extends dlm_widgets {
                 </a>
                 <?= $after_title; ?>
 
-                <?= do_shortcode('[outfits limit='.$limit.']'); ?>
+                <?= do_shortcode('[outfits limit="'.$limit.'"]'); ?>
             <?php else: ?>
                 <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
-                    <?= do_shortcode('[outfits limit='.$limit.']'); ?>
+                    <?= do_shortcode('[outfits limit="'.$limit.'"]'); ?>
                 </a>
             <?php endif; ?>
 
