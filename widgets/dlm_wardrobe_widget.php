@@ -68,7 +68,7 @@ class dlm_wardrobe_widget extends dlm_widgets {
 
         $title = isset( $instance['title'] ) ? $instance['title'] : '';
         $limit = intval(isset( $instance['limit'] ) ? $instance['limit'] : 0);
-        $style = intval(isset( $instance['style'] ) ? $instance['style'] : 0);
+        $style = isset( $instance['style'] ) ? $instance['style'] : 0;
         ?>
 
         <?= $before_widget; ?>

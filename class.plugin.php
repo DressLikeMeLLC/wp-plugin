@@ -230,7 +230,7 @@ class DressLikeMe extends TlView {
                 'color' => $color
             ]
         ]);
-        if (is_wp_error( $response ) || !is_array( $response ) || empty($response['body'])) {
+        if (is_wp_error($response) || !is_array( $response ) || empty($response['body'])) {
             header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
             exit();
         }
