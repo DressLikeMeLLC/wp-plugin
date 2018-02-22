@@ -222,6 +222,19 @@ class DressLikeMe extends TlView {
             exit();
         }
 
+        $response = wp_remote_post(DLM_URL .'/api/v1/'. get_option('dlm-name') .'/'. get_option('dlm-api-key') .'/save-settings', [
+            'method' => 'POST',
+            'sslverify' => false,
+            'body' => [
+                'hide-price' => $hidePrices,
+                'color' => $color
+            ]
+        ]);
+        if (is_wp_error( $response ) || !is_array( $response ) || empty($response['body'])) {
+            header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
+            exit();
+        }
+
         update_option('dlm-name', $name);
         update_option('dlm-api-key', $key);
         update_option('dlm-color', $color);
