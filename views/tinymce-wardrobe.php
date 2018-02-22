@@ -48,7 +48,7 @@
 
             var input_text = parseInt($("input[name='limit']", jqContext).val(), 10),
                 select_val = $("select[name='style']", jqContext).val(),
-                shortcode = '[wardrobe limit=' + input_text  + '" style="' + select_val + '"]';
+                shortcode = '[wardrobe limit="' + input_text  + '" style="' + select_val + '"]';
 
             passed_arguments.editor.selection.setContent(shortcode);
             passed_arguments.editor.windowManager.close();

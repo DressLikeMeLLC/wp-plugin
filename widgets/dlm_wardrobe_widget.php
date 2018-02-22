@@ -13,7 +13,7 @@ class dlm_wardrobe_widget extends dlm_widgets {
     }
 
     // The widget form (for the backend )
-    public function form( $instance ) {
+    public function form($instance) {
         if(!$this->checkCredentials()) {
             return true;
         }
@@ -21,9 +21,10 @@ class dlm_wardrobe_widget extends dlm_widgets {
         $defaults = [
             'title' => '',
             'limit' => '24',
+            'style' => 'horizontal',
         ];
 
-        extract( wp_parse_args( ( array ) $instance, $defaults ) );
+        extract(wp_parse_args(( array ) $instance, $defaults));
         ?>
 
         <p>
@@ -36,6 +37,14 @@ class dlm_wardrobe_widget extends dlm_widgets {
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="text" value="<?php echo esc_attr( $limit ); ?>" />
         </p>
 
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>"><?php _e( 'Style:', DLM_TD ); ?></label>
+            <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'style' ) ); ?>">
+                <option value="horizontal" <?php selected( $instance['style'], 'horizontal'); ?>><?php _e('Horizontal', DLM_TD) ?></option>
+                <option value="vertical" <?php selected( $instance['style'], 'vertical'); ?>><?php _e('Vertical', DLM_TD) ?></option>
+            </select>
+        </p>
+
         <?php
     }
 
@@ -44,6 +53,7 @@ class dlm_wardrobe_widget extends dlm_widgets {
         $instance = $old_instance;
         $instance['title']    = isset( $new_instance['title'] ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
         $instance['limit']    = isset( $new_instance['limit'] ) ? wp_strip_all_tags( $new_instance['limit'] ) : '';
+        $instance['style']    = isset( $new_instance['style'] ) ? wp_strip_all_tags( $new_instance['style'] ) : '';
         return $instance;
     }
 
@@ -53,6 +63,7 @@ class dlm_wardrobe_widget extends dlm_widgets {
 
         $title = isset( $instance['title'] ) ? $instance['title'] : '';
         $limit = intval(isset( $instance['limit'] ) ? $instance['limit'] : 0);
+        $style = intval(isset( $instance['style'] ) ? $instance['style'] : 0);
         ?>
 
         <?= $before_widget; ?>
@@ -66,10 +77,10 @@ class dlm_wardrobe_widget extends dlm_widgets {
                 </a>
                 <?= $after_title; ?>
 
-                <?= do_shortcode('[wardrobe limit='.$limit.']'); ?>
+                <?= do_shortcode('[wardrobe limit="'.$limit.'" style="'.$style.'"]'); ?>
             <?php else: ?>
                 <a href=<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
-                    <?= do_shortcode('[wardrobe limit='.$limit.']'); ?>
+                    <?= do_shortcode('[wardrobe limit="'.$limit.'" style="'.$style.'"]'); ?>
                 </a>
             <?php endif; ?>
             

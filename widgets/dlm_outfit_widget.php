@@ -79,10 +79,10 @@ class dlm_outfit_widget extends dlm_widgets {
                     </a>
                     <?= $after_title; ?>
 
-                    <?= do_shortcode('[outfit id='.$sid.' style='.$style.']'); ?>
+                    <?= do_shortcode('[outfit id="'.$sid.'" style="'.$style.'"]'); ?>
                 <?php else: ?>
                     <a href="<?php echo DLM_URL ?>/<?= get_option('dlm-name'); ?>" target="_blank">
-                        <?= do_shortcode('[outfit id='.$sid.' style='.$style.']'); ?>
+                        <?= do_shortcode('[outfit id="'.$sid.'" style="'.$style.'"]'); ?>
                     </a>
                 <?php endif; ?>
             <?php else: ?>
