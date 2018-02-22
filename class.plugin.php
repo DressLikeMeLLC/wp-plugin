@@ -226,7 +226,7 @@ class DressLikeMe extends TlView {
             'method' => 'POST',
             'sslverify' => false,
             'body' => [
-                'hide-price' => $hidePrices,
+                'hide_price' => $hidePrices,
                 'color' => $color
             ]
         ]);
