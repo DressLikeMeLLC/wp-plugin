@@ -226,11 +226,11 @@ class DressLikeMe extends TlView {
             'method' => 'POST',
             'sslverify' => false,
             'body' => [
-                'hide-price' => $hidePrices,
+                'hide_price' => $hidePrices,
                 'color' => $color
             ]
         ]);
-        if (is_wp_error( $response ) || !is_array( $response ) || empty($response['body'])) {
+        if (is_wp_error($response) || !is_array( $response ) || empty($response['body'])) {
             header('Location: '.admin_url('admin.php?page=dlm&saved=false'));
             exit();
         }
