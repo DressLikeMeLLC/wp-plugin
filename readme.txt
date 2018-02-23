@@ -3,9 +3,9 @@ Contributors: dresslikeme
 Donate link: https://dresslikeme.com
 Tags: dresslikeme, fashion, outfits
 Requires at least: 4.9.1
-Tested up to: 4.9.2
+Tested up to: 4.9.4
 Requires PHP: 5.2.4
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,11 +27,15 @@ This WordPress plugin brings the full functionality of the DressLikeMe platform 
 
 == Screenshots ==
 1. You can store your personal access data in the plugin settings
-2. In the WordPress editor you will find three new buttons: One of these allows you to search directly for products
+2. In the WordPress editor you will find five new buttons: One of these allows you to search directly for products
 3. After clicking on a product a short code is added to the editor
 4. The product will appear on your blog
 
 == Changelog ==
+
+= 1.2 =
+* Plugin translated into several languages
+* New layouts and styles for widgets added
 
 = 1.1 =
 * Added recent outfits and profile badge features
